@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@font-face {
+    font-family: 'Revamped';
+    src: url('/fonts/Revamped.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CyberBrush';
+    src: url('/fonts/Cyber Brush.ttf') format('truetype');
+}
+
+@keyframes flicker {
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 2px #4cdff5de, 0 0 4px #4cdff5de, 0 0 6px #4cdff5de, 0 0 10px #4cdff5de;
+    }
+    20%,
+    22%,
+    24%,
+    55% {
+        opacity: 0.4;
+        text-shadow: none;
+    }
+}
+
+.flicker {
+    animation: flicker 1.5s infinite;
+}
+
+@keyframes float-slow {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    25% {
+        transform: translate(4px, -4px);
+    }
+    50% {
+        transform: translate(0px, 4px);
+    }
+    75% {
+        transform: translate(-4px, -2px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes float-fast {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    25% {
+        transform: translate(4px, -2px);
+    }
+    50% {
+        transform: translate(2px, 6px);
+    }
+    75% {
+        transform: translate(0px, -4px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.animate-float-up {
+    animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-down {
+    animation: float-fast 7s ease-in-out infinite;
+}
+
+.animate-float-right {
+    animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-float-left {
+    animation: float-fast 6s ease-in-out infinite;
+}
+
+
+/* Hide scrollbars for better projector display */
+
+html,
+body {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    overflow: hidden;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+
+/* Hide scrollbars on all elements */
+
+* {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+
+/* Logo masking for transparent background */
+
+.logo-masked {
+    -webkit-mask: url('src/assets/logo.png') no-repeat center;
+    mask: url('src/assets/logo.png') no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background: linear-gradient(45deg, #4cdef5, #1b7bb3);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+
+/* Alternative: CSS-only logo with text */
+
+.logo-text {
+    background: linear-gradient(45deg, #4cdef5, #1b7bb3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Revamped', sans-serif;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(76, 222, 245, 0.5);
+}
+
+
+/* Force hide table on mobile as a workaround */
+
+@media (max-width: 639px) {
+    .force-hide-mobile {
+        display: none !important;
+    }
+}
+
+@keyframes glowPulse {
+    0%,
+    100% {
+        box-shadow: 0 0 25px 4px rgba(76, 222, 245, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px 8px rgba(76, 222, 245, 0.3);
+    }
+}
