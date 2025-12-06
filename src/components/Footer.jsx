@@ -53,9 +53,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm">
-            <a href="tel:+919989907703" className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors py-1 px-2">
+            <a href="tel:+917842070463" className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors py-1 px-2">
               <FaPhone className="w-4 h-4" />
-              +91 99899 07703
+              +91 7842070463
             </a>
             <a href="mailto:cbb@bvrit.ac.in" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors py-1 px-2">
               <FaEnvelope className="w-4 h-4" />
