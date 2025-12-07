@@ -60,7 +60,7 @@ function Home() {
         </section>
         
         {/* Upcoming Events */}
-        <section className="min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-4 sm:py-6 md:py-8 flex flex-col items-center justify-center text-center px-4 sm:px-8">
+        {/* <section className="min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] py-4 sm:py-6 md:py-8 flex flex-col items-center justify-center text-center px-4 sm:px-8">
           <div className="max-w-5xl w-full bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-10 md:p-16 border border-[#4cdef5]/20 [box-shadow:_0_0_25px_6px_rgba(76,222,245,0.15)] animate-[glowPulse_2s_ease-in-out_infinite]">
             <div className="mb-4 sm:mb-6 md:mb-8 mt-4 sm:mt-[-6px] md:mt-[-8px]">
               <div className="inline-block px-5 sm:px-6 py-2 sm:py-2 bg-[#4cdef5]/10 text-[#4cdef5] font-semibold rounded-full text-xs sm:text-sm tracking-wide shadow-inner mx-auto">
@@ -80,12 +80,10 @@ function Home() {
               <p className="py-2 sm:py-4 text-orange-300 font-semibold">Don't miss out! Open to all students.</p>
             </div>
             <div className="mt-2 sm:mt-10">
-              {/* <Link to="/events" className="inline-flex items-center"> */}
               <BorderedButton onClick={handleParticipateClick}>Participate Now!</BorderedButton>
-              {/* </Link> */}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Meet the Team Glimpse */}
         <section className="min-h-[60vh] sm:min-h-screen py-4 sm:py-10 md:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">

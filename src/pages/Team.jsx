@@ -6,149 +6,201 @@ import HeadingNText from "../components/HeadingNText";
 
 function Team() {
   const teamMembers = [
+    // 1. President
     {
-      name: "Karthik",
+      name: "Nikhil Mamilla",
       role: "President",
-      image: "/img/karthik.png",
-      email: "karthik@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/karthiksabareeshboddeti21052004?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      github: "https://github.com/KarthikSbrshB",
-      phone: "9989907703"
+      image: "/img/nikhil.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/nikhil-mamilla-823922289",
+      github: "https://github.com/NikhilMamilla",
+      phone: "7842070463"
     },
+
+    // 2. Vice President
     {
-      name: "Sowmya",
+      name: "Gadila Sowmya",
       role: "Vice President",
-      image: "/img/sowmya.png",
+      image: "/img/sowmyab.png",
       email: "sowmya@bvrit.ac.in",
-      linkedin: "www.linkedin.com/in/sowmyagopisetti",
-      github: "https://github.com/SowmyaGopisetti",
-      phone: "9398773971"
+      linkedin: "https://www.linkedin.com/in/sowmya-gadila",
+      github: "https://github.com/GadilaSowmya",
+      phone: "6305055156"
     },
+
+    // 3. Director of Administration
     {
-      name: "Rashmitha Sai",
+      name: "Enukonda Siri Chandana",
       role: "Director of Administration",
-      image: "/img/rashmitha sai.png",
-      email: "rashmitha@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/rashmitha-sai-chidirala-7a3aa6258",
-      github: "https://github.com/Chidirala-12",
-      phone: "6305160329"
+      image: "/img/siri.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/siri-chandana-enukonda-23b256293/",
+      github: "https://github.com/Siri-1105",
+      phone: "9063554337"
     },
+
+    // 4. Head of Technical Development (Development)
     {
-      name: "Eshwari",
-      role: "Marketing Executive",
-      image: "/img/eshwari.png",
-      email: "eshwari@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/eshwarikalamatha/",
-      github: "https://github.com/Kalamatha-Eshwari",
-      phone: "6304567483"
+      name: "Dubasi Mukundh",
+      role: "Head of Technical Department (Development)",
+      image: "/img/mukundh.png",
+      email: "mukundh@bvrit.ac.in",
+      linkedin: "https://www.linkedin.com/in/mukundh-dubasi-7a7158293",
+      github: "https://github.com/Mukundh15",
+      phone: "7386199296"
     },
+
+    // 5. Head of Technical Development (Operations)
     {
-      name: "Santhosh",
-      role: "Social Media Manager",
-      image: "/img/santhosh.png",
-      email: "santhosh@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/vemula-santhosh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/Santhosh00001",
-      phone: "6304912971"
+      name: "Merige Eashwar Reddy",
+      role: "Head of Technical Department (Operations)",
+      image: "/img/eashwar.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/merige-eashwar-reddy-4963b0293/",
+      github: "https://github.com/Eashwar-reddy",
+      phone: "9392782641"
     },
+    // 6. Head of Logistics
     {
-      name: "Ajay Kumar",
-      role: "Head of Technical Department",
-      image: "/img/ajay kumar.png",
-      email: "ajay@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/ajay-kumar-potuganti",
-      github: "https://github.com/ajay0120",
-      phone: "9573282765"
+      name: "Somepalli Gopi Sai Mahesh",
+      role: "Head of Logistics",
+      image: "/img/mahesh.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/somepalli-gopi-sai-mahesh-557167293",
+      github: "https://github.com/mahesh1110",
+      phone: "7032623679"
     },
+
+    // 7. Technical Research and Funding Lead
     {
-      name: "Thrinath",
-      role: "Event Manager",
-      image: "/img/thrinath.png",
-      email: "thrinath@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/kasarlathrinathreddy",
-      github: "https://github.com/ThrinathReddyKasarla",
-      phone: "7993172793"
+      name: "Boyeena Jatin Kumar",
+      role: "Technical Research and Funding Lead",
+      image: "/img/jathin.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/jatin-kumar-boyeena/",
+      github: "https://github.com/BJatinKumar",
+      phone: "7207191770"
     },
+
+    // 8. Treasurer
     {
-      name: "Pavan Chandra",
-      role: "Event Manager",
-      image: "/img/pavan chandra.png",
-      email: "pavan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/pavan-chnadra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/Pavanchandra4000",
-      phone: "7989240927"
+      name: "Chilupuri Vishwa Teja",
+      role: "Treasurer",
+      image: "/img/vishwa.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/vishwa-teja-chilupuri-410224302",
+      github: "https://github.com/Vishwaa090804",
+      phone: "9618052510"
     },
+
+    // 9. Digital Head
     {
-      name: "Reshmi",
-      role: "Hospitality Head",
-      image: "/img/reshmi.png",
-      email: "reshmi@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/reshmi-bodepudi",
-      github: "https://github.com/reshmibodepudi",
-      phone: "9293947141"
-    },
-    {
-      name: "Aniket",
+      name: "Poduri Sesha Sai Sathwik",
       role: "Digital Head",
-      image: "/img/aniket.png",
-      email: "aniket@bvrit.ac.in",
-      linkedin: "https://linkedin.com/in/aniket-cbb",
-      github: "https://github.com/aniket-cbb",
+      image: "/img/sathwik.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/sathwik180/",
+      github: "https://github.com/Sai-Sathwik2718",
+      phone: "8977176804"
+    },
+    // 10. Marketing Executive
+    {
+      name: "Ediga Sai Murari Goud",
+      role: "Marketing Executive",
+      image: "/img/murari.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/ediga-sai-murari-goud-a46499293",
+      github: "https://github.com/Saimurarigoud",
+      phone: "6300502920"
+    },
+
+    // 11. Social Media Manager
+    {
+      name: "Chanagari Nandini",
+      role: "Social Media Manager",
+      image: "/img/nandhini.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/chanagari-nandini-95a309304/",
+      github: "https://github.com/23211A0552",
+      phone: "7799008029"
+    },
+
+    // 12. Creative Head
+    {
+      name: "Kasani Hansika Goud",
+      role: "Creative Head",
+      image: "/img/hansika.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/kasani-hansika-3b0973289/",
+      github: "https://github.com/Hansika65",
+      phone: "9381867924"
+    },
+
+    // 13. Innovation & Outreach Lead
+    {
+      name: "Nallagutla Kiran Kumar Reddy",
+      role: "Innovation and Outreach Lead",
+      image: "/img/kiran.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/nallagutla-kiran-kumar-reddy-1aa3b6293/",
+      github: "https://github.com/kirankumar2403",
+      phone: "7816030968"
+    },
+
+
+    // 14. Event Manager
+    {
+      name: "Amara Shivateja",
+      role: "Event Manager",
+      image: "/img/amara.png",
+      email: "",
+      linkedin: "",
+      github: "",
       phone: ""
     },
+
+    // 15. Event Manager
     {
-      name: "Sai Charan",
-      role: "Feedback & Review Manager",
-      image: "/img/sai charan.png",
-      email: "saicharan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/a-sai-charan-166573259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/aduganisaicharan",
-      phone: "8074242996"
+      name: "Annabeemoju Varun",
+      role: "Event Manager",
+      image: "/img/varun.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/varun-annabeemoju-3378762a6",
+      github: "https://github.com/Varunannabeemoju123",
+      phone: "9063991205"
     },
+
+    // 16. Feedback and Review Manager
     {
-      name: "Sriya",
-      role: "Innovation & Outreach Lead",
-      image: "/img/sriya.png",
-      email: "sriya@bvrit.ac.in",
-      linkedin: "http://linkedin.com/in/sriya-lanka-065253259",
-      github: "https://github.com/sl-1718",
-      phone: "7997016612"
+      name: "Beere Adbhutha",
+      role: "Feedback and Review Manager",
+      image: "/img/Adbutha.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/adbhutha",
+      github: "https://github.com/Adbhutha10",
+      phone: "9866796510"
     },
+
+    // 17. Hospitality Head
     {
-      name: "Vasanth",
-      role: "Head of Logistics",
-      image: "/img/vasanth.png",
-      email: "vasanth@bvrit.ac.in",
-      linkedin: "http://www.linkedin.com/in/vasanth-kumar-musku-1b9335259/",
-      github: "https://github.com/MuskuVasanthKumar",
-      phone: "9949132441"
+      name: "Mogili Sowmya Reddy",
+      role: "Hospitality Head",
+      image: "/img/sowmyac.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/mogili-sowmya-reddy-779932293/",
+      github: "https://github.com/SowmyaReddyMogili",
+      phone: "8074957956"
     },
+
+    // 18. Volunteer Program Manager
     {
-      name: "Vishal",
-      role: "Treasurer",
-      image: "/img/vishal.png",
-      email: "vishal@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/vishal-reddy-086583259/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/GurramVishalReddy",
-      phone: "6301721315"
-    },
-    {
-      name: "Abhigna",
-      role: "Creative Head",
-      image: "/img/abhigna.png",
-      email: "abhigna@bvrit.ac.in",
-      linkedin: "https://linkedin.com//in/arsam-abhigna-740395259",
-      github: "https://github.com/Abhigna-arsam",
-      phone: "8897004240"
-    },
-    {
-      name: "Anjan Kumar",
+      name: "Burugula Raghavendra",
       role: "Volunteer Program Manager",
-      image: "/img/anjan kumar.png",
-      email: "anjan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/anjan-kumar-kamalapur-8b1398259",
-      github: "https://github.com/AnjanKumarKamalapur",
-      phone: "9441817172"
+      image: "/img/ragava.png",
+      email: "",
+      linkedin: "https://www.linkedin.com/in/burugula-raghavendra",
+      github: "https://github.com/Burugula2006",
+      phone: "9014353208"
     }
   ];
 
