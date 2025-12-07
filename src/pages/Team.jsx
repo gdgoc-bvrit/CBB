@@ -154,9 +154,9 @@ function Team() {
       role: "Event Manager",
       image: "/img/amara.png",
       email: "",
-      linkedin: "",
-      github: "",
-      phone: ""
+      linkedin: "https://www.linkedin.com/in/amarashivateja",
+      github: "https://github.com/shivatejaamara",
+      phone: "9515683604"
     },
 
     // 15. Event Manager
@@ -179,8 +179,8 @@ function Team() {
       linkedin: "https://www.linkedin.com/in/adbhutha",
       github: "https://github.com/Adbhutha10",
       phone: "9866796510"
-    },
-
+    }];
+    const teamMembers2 = [
     // 17. Hospitality Head
     {
       name: "Mogili Sowmya Reddy",
@@ -246,6 +246,31 @@ function Team() {
                   />
                 </div>
               ))}
+            </div>
+            {/* Team Members 2 — Centered */}
+            <div className="w-full flex justify-center">
+              <div className="grid grid-cols-2 xs:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
+                {teamMembers2.map((member, index) => (
+                  <div key={index} className="flex justify-center">
+                    <ProfileCard
+                      name={member.name}
+                      title={member.role}
+                      handle={member.name.toLowerCase().replace(/\s+/g, '')}
+                      contactText="Contact"
+                      avatarUrl={member.image}
+                      showUserInfo={true}
+                      onContactClick={() => handleContactClick(member)}
+                      className={`w-full max-w-[280px] sm:max-w-sm`}
+                      linkedin={member.linkedin}
+                      github={member.github}
+                      phone={member.phone}
+                      behindGradient={true}
+                      innerGradient={true}
+                      enableTilt={true}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

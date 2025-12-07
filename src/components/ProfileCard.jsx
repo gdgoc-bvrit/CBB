@@ -474,7 +474,18 @@ const ProfileCardComponent = ({
           <div className="pc-content">
             <div className="pc-details">
               <h3>{name}</h3>
-              <p>{title}</p>
+              <p className="break-words whitespace-normal text-center leading-tight p-1">
+                {title.includes("(")
+                  ? (
+                    <>
+                      {title.split("(")[0].trim()}
+                      <br />
+                      ({title.split("(")[1]}
+                    </>
+                  )
+                  : title
+                }
+              </p>
             </div>
           </div>
         </div>
