@@ -197,7 +197,7 @@ function Team() {
     // 18. Volunteer Program Manager
     {
       name: "B Raghavendra",
-      role: "Volunteer Program Manager",
+      role: "program coordination manager",
       image: "/img/ragava.png",
       email: "",
       linkedin: "https://www.linkedin.com/in/burugula-raghavendra",
@@ -210,7 +210,7 @@ function Team() {
     {
       name: "Karthik",
       role: "President",
-      image: "/img/karthik.png",
+      image: "/img2/karthik.png",
       email: "karthik@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/karthiksabareeshboddeti21052004?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       github: "https://github.com/KarthikSbrshB",
@@ -219,7 +219,7 @@ function Team() {
     {
       name: "Sowmya",
       role: "Vice President",
-      image: "/img/sowmya.png",
+      image: "/img2/sowmya.png",
       email: "sowmya@bvrit.ac.in",
       linkedin: "www.linkedin.com/in/sowmyagopisetti",
       github: "https://github.com/SowmyaGopisetti",
@@ -228,7 +228,7 @@ function Team() {
     {
       name: "Rashmitha Sai",
       role: "Director of Administration",
-      image: "/img/rashmitha sai.png",
+      image: "/img2/rashmitha sai.png",
       email: "rashmitha@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/rashmitha-sai-chidirala-7a3aa6258",
       github: "https://github.com/Chidirala-12",
@@ -237,7 +237,7 @@ function Team() {
     {
       name: "Eshwari",
       role: "Marketing Executive",
-      image: "/img/eshwari.png",
+      image: "/img2/eshwari.png",
       email: "eshwari@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/eshwarikalamatha/",
       github: "https://github.com/Kalamatha-Eshwari",
@@ -246,7 +246,7 @@ function Team() {
     {
       name: "Santhosh",
       role: "Social Media Manager",
-      image: "/img/santhosh.png",
+      image: "/img2/santhosh.png",
       email: "santhosh@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/vemula-santhosh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "https://github.com/Santhosh00001",
@@ -255,7 +255,7 @@ function Team() {
     {
       name: "Ajay Kumar",
       role: "Head of Technical Department",
-      image: "/img/ajay kumar.png",
+      image: "/img2/ajay kumar.png",
       email: "ajay@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/ajay-kumar-potuganti",
       github: "https://github.com/ajay0120",
@@ -264,7 +264,7 @@ function Team() {
     {
       name: "Thrinath",
       role: "Event Manager",
-      image: "/img/thrinath.png",
+      image: "/img2/thrinath.png",
       email: "thrinath@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/kasarlathrinathreddy",
       github: "https://github.com/ThrinathReddyKasarla",
@@ -273,7 +273,7 @@ function Team() {
     {
       name: "Pavan Chandra",
       role: "Event Manager",
-      image: "/img/pavan chandra.png",
+      image: "/img2/pavan chandra.png",
       email: "pavan@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/pavan-chnadra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "https://github.com/Pavanchandra4000",
@@ -282,7 +282,7 @@ function Team() {
     {
       name: "Reshmi",
       role: "Hospitality Head",
-      image: "/img/reshmi.png",
+      image: "/img2/reshmi.png",
       email: "reshmi@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/reshmi-bodepudi",
       github: "https://github.com/reshmibodepudi",
@@ -291,7 +291,7 @@ function Team() {
     {
       name: "Aniket",
       role: "Digital Head",
-      image: "/img/aniket.png",
+      image: "/img2/aniket.png",
       email: "aniket@bvrit.ac.in",
       linkedin: "https://linkedin.com/in/aniket-cbb",
       github: "https://github.com/aniket-cbb",
@@ -300,7 +300,7 @@ function Team() {
     {
       name: "Sai Charan",
       role: "Feedback & Review Manager",
-      image: "/img/sai charan.png",
+      image: "/img2/sai charan.png",
       email: "saicharan@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/a-sai-charan-166573259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "https://github.com/aduganisaicharan",
@@ -309,7 +309,7 @@ function Team() {
     {
       name: "Sriya",
       role: "Innovation & Outreach Lead",
-      image: "/img/sriya.png",
+      image: "/img2/sriya.png",
       email: "sriya@bvrit.ac.in",
       linkedin: "http://linkedin.com/in/sriya-lanka-065253259",
       github: "https://github.com/sl-1718",
@@ -318,7 +318,7 @@ function Team() {
     {
       name: "Vasanth",
       role: "Head of Logistics",
-      image: "/img/vasanth.png",
+      image: "/img2/vasanth.png",
       email: "vasanth@bvrit.ac.in",
       linkedin: "http://www.linkedin.com/in/vasanth-kumar-musku-1b9335259/",
       github: "https://github.com/MuskuVasanthKumar",
@@ -327,7 +327,7 @@ function Team() {
     {
       name: "Vishal",
       role: "Treasurer",
-      image: "/img/vishal.png",
+      image: "/img2/vishal.png",
       email: "vishal@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/vishal-reddy-086583259/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "https://github.com/GurramVishalReddy",
@@ -336,7 +336,7 @@ function Team() {
     {
       name: "Abhigna",
       role: "Creative Head",
-      image: "/img/abhigna.png",
+      image: "/img2/abhigna.png",
       email: "abhigna@bvrit.ac.in",
       linkedin: "https://linkedin.com//in/arsam-abhigna-740395259",
       github: "https://github.com/Abhigna-arsam",
@@ -345,7 +345,7 @@ function Team() {
     {
       name: "Anjan Kumar",
       role: "Volunteer Program Manager",
-      image: "/img/anjan kumar.png",
+      image: "/img2/anjan kumar.png",
       email: "anjan@bvrit.ac.in",
       linkedin: "https://www.linkedin.com/in/anjan-kumar-kamalapur-8b1398259",
       github: "https://github.com/AnjanKumarKamalapur",
