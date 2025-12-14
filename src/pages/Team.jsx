@@ -368,7 +368,7 @@ function Team() {
           <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
             {/* Header */}
             <div className="flex flex-col items-center justify-center text-center mb-6 sm:mb-8 lg:mb-12">
-              <HeadingNText title={showTeam2025 ? "CBB Batch 2025" : "CBB Batch 2026"}>
+              <HeadingNText title={showTeam2025 ? "CBB Batch 2026" : "CBB Batch 2027"}>
                 {showTeam2025
                   ? "Our Previous Year Core Team"
                   : "One Team. One Vision. Infinite Possibilities."}
