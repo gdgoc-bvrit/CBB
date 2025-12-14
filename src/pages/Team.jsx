@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEnvelope, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import Footer from "../components/Footer";
 import ProfileCard from "../components/ProfileCard";
 import HeadingNText from "../components/HeadingNText";
+import BorderedButton from "../components/BorderedButton";
 
 function Team() {
+  const [showTeam2025, setShowTeam2025] = useState(false);
   const teamMembers = [
     // 1. President
     {
@@ -366,14 +368,16 @@ function Team() {
           <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
             {/* Header */}
             <div className="flex flex-col items-center justify-center text-center mb-6 sm:mb-8 lg:mb-12">
-              <HeadingNText title="CBB Batch 2027">
-                One Team. One Vision. Infinite Possibilities.
+              <HeadingNText title={showTeam2025 ? "CBB Batch 2025" : "CBB Batch 2026"}>
+                {showTeam2025
+                  ? "Our Previous Year Core Team"
+                  : "One Team. One Vision. Infinite Possibilities."}
               </HeadingNText>
             </div>
 
             {/* Team Grid with ProfileCards */}
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center items-center min-h-[60vh]">
-              {teamMembers.map((member, index) => (
+              {(showTeam2025 ? teamMembers3 : teamMembers).map((member, index) => (
                 <div key={index} className="flex justify-center">
                   <ProfileCard
                     name={member.name}
@@ -394,30 +398,38 @@ function Team() {
                 </div>
               ))}
             </div>
-            {/* Team Members 2 — Centered */}
-            <div className="w-full flex justify-center">
-              <div className="grid grid-cols-2 xs:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
-                {teamMembers2.map((member, index) => (
-                  <div key={index} className="flex justify-center">
-                    <ProfileCard
-                      name={member.name}
-                      title={member.role}
-                      handle={member.name.toLowerCase().replace(/\s+/g, '')}
-                      contactText="Contact"
-                      avatarUrl={member.image}
-                      showUserInfo={true}
-                      onContactClick={() => handleContactClick(member)}
-                      className={`w-full max-w-[280px] sm:max-w-sm`}
-                      linkedin={member.linkedin}
-                      github={member.github}
-                      phone={member.phone}
-                      behindGradient={true}
-                      innerGradient={true}
-                      enableTilt={true}
-                    />
-                  </div>
-                ))}
+            {!showTeam2025 && (
+              <div className="w-full flex justify-center">
+                <div className="grid grid-cols-2 xs:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
+                  {teamMembers2.map((member, index) => (
+                    <div key={index} className="flex justify-center">
+                      <ProfileCard
+                        name={member.name}
+                        title={member.role}
+                        handle={member.name.toLowerCase().replace(/\s+/g, '')}
+                        contactText="Contact"
+                        avatarUrl={member.image}
+                        showUserInfo={true}
+                        onContactClick={() => handleContactClick(member)}
+                        className={`w-full max-w-[280px] sm:max-w-sm`}
+                        linkedin={member.linkedin}
+                        github={member.github}
+                        phone={member.phone}
+                        behindGradient={true}
+                        innerGradient={true}
+                        enableTilt={true}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
+            )}
+            <div className="flex justify-center mt-8">
+              <BorderedButton
+                onClick={() => setShowTeam2025(!showTeam2025)}
+              >
+                {showTeam2025 ? "VIEW CURRENT TEAM" : "VIEW TEAM 2025"}
+              </BorderedButton>
             </div>
           </div>
         </section>
