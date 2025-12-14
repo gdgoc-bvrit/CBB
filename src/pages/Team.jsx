@@ -400,7 +400,7 @@ function Team() {
             </div>
             {!showTeam2025 && (
               <div className="w-full flex justify-center">
-                <div className="grid grid-cols-2 xs:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
                   {teamMembers2.map((member, index) => (
                     <div key={index} className="flex justify-center">
                       <ProfileCard
@@ -411,7 +411,7 @@ function Team() {
                         avatarUrl={member.image}
                         showUserInfo={true}
                         onContactClick={() => handleContactClick(member)}
-                        className={`w-full max-w-[280px] sm:max-w-sm`}
+                        className="w-full max-w-[280px] sm:max-w-sm"
                         linkedin={member.linkedin}
                         github={member.github}
                         phone={member.phone}
