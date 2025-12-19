@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = ["Home", "About", "Team", "Events", "Contact Us"];
+const navItems = ["Home", "About", "Team", "Events", "FIT", "SRC", "Contact Us"];
 
 const PillNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
