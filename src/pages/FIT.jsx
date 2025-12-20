@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import BorderedButton from "../components/BorderedButton";
@@ -6,6 +6,35 @@ import HeadingNText from "../components/HeadingNText";
 import { Spotlight } from "../components/Spotlight";
 
 function FIT() {
+  const scrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      const scrollAmount = current.clientWidth; // Scroll full width
+      if (direction === 'left') {
+        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        const maxScrollLeft = current.scrollWidth - current.clientWidth;
+        if (current.scrollLeft >= maxScrollLeft - 10) {
+          current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        scroll('right');
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <div className="relative flex w-full items-center justify-center bg-black overflow-x-hidden">
       {/* Background + spotlight */}
@@ -191,95 +220,136 @@ function FIT() {
           </div>
         </section>
 
-        {/* Scholarships & Opportunities */}
-        <section className="min-h-screen py-12 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">
-          <div className="max-w-5xl w-full">
-            <HeadingNText title="Scholarships & Opportunities">
-              <span className="text-center block">Scholarships &amp; Fellowships</span>
-            </HeadingNText>
-
-            <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mb-8 mt-8">
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-                FIT actively promotes and guides students toward prestigious
-                national and global opportunities designed exclusively for women
-                in technology.
-              </p>
-
-              <h4 className="text-xl sm:text-2xl font-bold mb-6 text-[#4cdef5]">
-                Highlighted Programs:
-              </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto text-sm sm:text-base">
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">
-                    Grace Hopper Celebration Scholarships
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">Amazon Future Engineer (FFE)</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">
-                    Deloitte Women in Technology Programs
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">
-                    Virtusa Engineering Empowerment Programs
-                  </span>
-                </li>
-              </ul>
-
-              <p className="text-base sm:text-lg text-gray-200 mt-8 leading-relaxed">
-                Students receive guidance on eligibility, application strategy,
-                resume building, and interview preparation.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Industry Exposure */}
-        <section className="min-h-screen py-12 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">
-          <div className="max-w-5xl w-full">
-            <HeadingNText title="Industry Exposure">
-              <span className="text-center block">
-                Industry &amp; Corporate Programs
+        {/* Scholarships & Corporate Programs */}
+        <section className="min-h-screen py-12 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6 overflow-hidden">
+          <div className="max-w-7xl w-full relative">
+            <HeadingNText title="Programs & Opportunities">
+              <span className="text-center block max-w-3xl mx-auto">
+                We guide and mentor students through prestigious national and global programs designed for women in technology.
               </span>
             </HeadingNText>
 
-            <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mt-8">
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-                FIT collaborates with leading organizations to provide
-                real-world exposure and career pathways.
-              </p>
+            <div
+              className="mt-16 group relative px-4"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div
+                ref={scrollRef}
+                className="flex overflow-x-auto scrollbar-hide gap-6 snap-x snap-mandatory pb-8 scroll-smooth"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {(() => {
+                  const fitPrograms = [
+                    {
+                      code: "GHC",
+                      fullName: "Grace Hopper Celebration",
+                      image: "https://ghc.anitab.org/wp-content/uploads/2023/05/AnitaB.org-GHC-23-Logo-1.png",
+                      description: "The world's largest gathering of women technologists, offering scholarships and career development.",
+                      link: "https://ghc.anitab.org/"
+                    },
+                    {
+                      code: "FFE",
+                      fullName: "Amazon Future Engineer",
+                      image: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+                      description: "Scholarships and support for female students pursuing computer science and engineering.",
+                      link: "https://www.amazonfutureengineer.com/"
+                    },
+                    {
+                      code: "WIT",
+                      fullName: "Deloitte Women in Tech",
+                      image: "https://cdn.simpleicons.org/deloitte/86BC25",
+                      description: "Industry mentorship and professional training programs for women in technology roles.",
+                      link: "https://www2.deloitte.com/us/en/pages/about-deloitte/articles/women-in-technology.html"
+                    },
+                    {
+                      code: "EE",
+                      fullName: "Virtusa Empowerment",
+                      image: "https://cdn.simpleicons.org/virtusa/0072C6",
+                      description: "Engineering empowerment initiatives focused on skill-building and technical excellence.",
+                      link: "https://www.virtusa.com/"
+                    },
+                    {
+                      code: "WOW",
+                      fullName: "Amazon WOW",
+                      image: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+                      description: "A networking platform for women to connect with Amazon's tech community and opportunities.",
+                      link: "https://www.amazon.jobs/en/teams/amazon-wow"
+                    },
+                    {
+                      code: "FGWC",
+                      fullName: "Flipkart Girls Wanna Code",
+                      image: "https://cdn.simpleicons.org/flipkart/2874F0",
+                      description: "A program to encourage and mentor women engineering students in building impactful tech.",
+                      link: "https://www.flipkartgrip.com/"
+                    },
+                    {
+                      code: "WGT",
+                      fullName: "Walmart Global Tech",
+                      image: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg",
+                      description: "Initiatives to support women in tech through mentorship, internships, and career growth.",
+                      link: "https://tech.walmart.com/"
+                    }
+                  ];
 
-              <h4 className="text-xl sm:text-2xl font-bold mb-6 text-[#4cdef5]">
-                Industry Engagement Includes:
-              </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto text-sm sm:text-base">
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">Amazon WOW</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">Flipkart Girls Wanna Code</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">
-                    Walmart Global Tech Initiatives
-                  </span>
-                </li>
-              </ul>
+                  return fitPrograms.map((program, index) => (
+                    <div key={index} className="flex-none w-full sm:w-1/2 lg:w-[calc(25%-1.125rem)] snap-start">
+                      <div className="group relative bg-[#0f0f0f] rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden hover:shadow-[0_20px_50px_rgba(76,222,245,0.2)] transition-all duration-300 transform hover:-translate-y-2 h-full border border-[#4cdef5]/20">
+                        <div className="relative h-48 overflow-hidden bg-white/5 p-8 flex items-center justify-center">
+                          <img
+                            src={program.image}
+                            alt={program.code}
+                            className="h-24 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent"></div>
 
-              <p className="text-base sm:text-lg text-gray-200 mt-8 leading-relaxed">
-                These programs help students understand industry expectations,
-                professional culture, and emerging technologies.
-              </p>
+                          <div className="absolute bottom-4 left-6 right-6 text-left">
+                            <h3 className="text-xl font-bold text-white mb-0">{program.code}</h3>
+                            <p className="text-xs text-[#4cdef5] font-semibold">{program.fullName}</p>
+                          </div>
+                        </div>
+
+                        <div className="p-6 bg-[#0f0f0f]">
+                          <p className="text-gray-400 text-sm leading-relaxed h-20 overflow-hidden text-left">{program.description}</p>
+
+                          <a
+                            href={program.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-6 w-full bg-gradient-to-r from-[#81c7f5] to-[#1b7bb3] text-white py-2 px-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center text-sm"
+                          >
+                            Visit Program
+                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ));
+                })()}
+              </div>
+
+              {/* Bottom Navigation Buttons */}
+              <div className="flex justify-center gap-4 mt-8">
+                <button
+                  onClick={() => scroll('left')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/20 transition-all duration-300"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => scroll('right')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/20 transition-all duration-300"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -347,8 +417,8 @@ function FIT() {
         </section>
 
         <Footer note="FIT operates as a specialized sub-club under Coding Brigade BVRIT (CBB), working towards technical excellence, innovation, inclusivity, and student leadership." />
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

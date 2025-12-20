@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import BorderedButton from "../components/BorderedButton";
@@ -6,6 +6,35 @@ import HeadingNText from "../components/HeadingNText";
 import { Spotlight } from "../components/Spotlight";
 
 function SRC() {
+  const scrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      const scrollAmount = current.clientWidth;
+      if (direction === 'left') {
+        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        const maxScrollLeft = current.scrollWidth - current.clientWidth;
+        if (current.scrollLeft >= maxScrollLeft - 10) {
+          current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        scroll('right');
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <div className="relative flex w-full items-center justify-center bg-black overflow-x-hidden">
       <Spotlight />
@@ -121,7 +150,7 @@ function SRC() {
                 Key Highlights
               </span>
             </HeadingNText>
-            
+
             <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mt-8">
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-4xl mx-auto">
                 <li className="flex items-start">
@@ -150,52 +179,128 @@ function SRC() {
         </section>
 
         {/* Collaborations Section */}
-        <section className="min-h-screen py-12 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">
-          <div className="max-w-5xl w-full">
-            <HeadingNText title="Institutional & Professional Collaborations">
-              <span className="text-center block">
-                Collaborations & Associations
+        <section className="min-h-screen py-12 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6 overflow-hidden">
+          <div className="max-w-7xl w-full relative">
+            <HeadingNText title="Collaborations & Associations">
+              <span className="text-center block max-w-3xl mx-auto">
+                SRC actively collaborates with reputed institutions and organizations to enhance research exposure and credibility.
               </span>
             </HeadingNText>
-            
-            <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mt-8">
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-                SRC actively collaborates with reputed institutions and organizations to enhance research exposure and credibility.
-              </p>
-              
-              <h4 className="text-xl sm:text-2xl font-bold mb-6 text-[#4cdef5]">
-                Notable Associations:
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left max-w-4xl mx-auto">
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">IEEE</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">ICRISAT</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">IIT Hyderabad (IIT-H)</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">IIT Bombay (IIT-B)</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">National Institute of Advanced Studies (NIAS)</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-[#4cdef5] mr-2">•</span>
-                  <span className="text-gray-200">TiHAN – IIT Hyderabad</span>
-                </div>
+
+            <div
+              className="mt-16 group relative px-4"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div
+                ref={scrollRef}
+                className="flex overflow-x-auto scrollbar-hide gap-6 snap-x snap-mandatory pb-8 scroll-smooth"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {(() => {
+                  const srcCollaborations = [
+                    {
+                      code: "IEEE",
+                      fullName: "Institute of Electrical and Electronics Engineers",
+                      image: "https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg",
+                      description: "Global professional organization dedicated to advancing technology for the benefit of humanity.",
+                      link: "https://www.ieee.org/"
+                    },
+                    {
+                      code: "ICRISAT",
+                      fullName: "International Crops Research Institute",
+                      image: "https://cdn.uc.assets.prezly.com/0199fbfc-1ae5-4e19-9824-f0491f22c47c/-/crop/699x366/799,101/-/preview/-/preview/600x600/",
+                      description: "International research organization conducting agricultural research for development in semi-arid tropics.",
+                      link: "https://www.icrisat.org/"
+                    },
+                    {
+                      code: "IIT-H",
+                      fullName: "IIT Hyderabad",
+                      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1NWv29HKlqRVxRLin-vcSq7wgO6OeDmfyDQ&s",
+                      description: "Premier technical institution providing advanced research and innovation opportunities.",
+                      link: "https://www.iith.ac.in/"
+                    },
+                    {
+                      code: "IIT-B",
+                      fullName: "IIT Bombay",
+                      image: "https://upload.wikimedia.org/wikipedia/en/1/1d/Indian_Institute_of_Technology_Bombay_Logo.svg",
+                      description: "Leading institute for research, innovation, and academic excellence in India.",
+                      link: "https://www.iitb.ac.in/"
+                    },
+                    {
+                      code: "NIAS",
+                      fullName: "National Institute of Advanced Studies",
+                      image: "https://media.licdn.com/dms/image/v2/C560BAQFOljuifDx-iw/company-logo_200_200/company-logo_200_200/0/1631404368881?e=2147483647&v=beta&t=8Fzl0uAX3N3STyOdB42soqdvUhmso4hO_GKg3v79YEg",
+                      description: "Research institute for advanced studies and interdisciplinary exploration in science and humanities.",
+                      link: "https://www.nias.res.in/"
+                    },
+                    {
+                      code: "TiHAN",
+                      fullName: "TiHAN – IIT Hyderabad",
+                      image: "https://tihan.iith.ac.in/images/logo%20vector%20horizontal-07.png",
+                      description: "Hub for autonomous navigation and data acquisition systems based at IIT Hyderabad.",
+                      link: "https://tihan.iith.ac.in/"
+                    }
+                  ];
+
+                  return srcCollaborations.map((collab, index) => (
+                    <div key={index} className="flex-none w-full sm:w-1/2 lg:w-[calc(25%-1.125rem)] snap-start">
+                      <div className="group relative bg-[#0f0f0f] rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] overflow-hidden hover:shadow-[0_20px_50px_rgba(76,222,245,0.2)] transition-all duration-300 transform hover:-translate-y-2 h-full border border-[#4cdef5]/20">
+                        <div className="relative h-48 overflow-hidden bg-white/5 p-8 flex items-center justify-center">
+                          <img
+                            src={collab.image}
+                            alt={collab.code}
+                            className="h-24 w-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent"></div>
+
+                          <div className="absolute bottom-4 left-6 right-6 text-left">
+                            <h3 className="text-xl font-bold text-white mb-0">{collab.code}</h3>
+                            <p className="text-xs text-[#4cdef5] font-semibold">{collab.fullName}</p>
+                          </div>
+                        </div>
+
+                        <div className="p-6 bg-[#0f0f0f]">
+                          <p className="text-gray-400 text-sm leading-relaxed h-20 overflow-hidden text-left">{collab.description}</p>
+
+                          <a
+                            href={collab.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-6 w-full bg-gradient-to-r from-[#81c7f5] to-[#1b7bb3] text-white py-2 px-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center justify-center text-sm"
+                          >
+                            Visit Website
+                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ));
+                })()}
               </div>
-              
-              <p className="text-base sm:text-lg text-gray-200 mt-8 leading-relaxed">
-                These collaborations enable students to access expert mentorship, advanced research environments, and national-level platforms.
-              </p>
+
+              {/* Bottom Navigation Buttons */}
+              <div className="flex justify-center gap-4 mt-8">
+                <button
+                  onClick={() => scroll('left')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/20 transition-all duration-300"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => scroll('right')}
+                  className="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/20 transition-all duration-300"
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -208,7 +313,7 @@ function SRC() {
                 SRC Activities & Programs
               </span>
             </HeadingNText>
-            
+
             <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mt-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-4xl mx-auto">
                 <div className="flex items-start">
@@ -248,7 +353,7 @@ function SRC() {
                 Why SRC Matters
               </span>
             </HeadingNText>
-            
+
             <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] rounded-2xl p-6 sm:p-8 md:p-12 border border-[#4cdef5]/20 backdrop-blur-sm mt-8">
               <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed">
                 SRC empowers students to move beyond learning existing knowledge and start creating new knowledge. It nurtures critical thinking, innovation, and academic rigor—preparing students for research careers, higher studies, and impactful roles in industry and academia.
@@ -258,8 +363,8 @@ function SRC() {
         </section>
 
         <Footer note="SRC operates as a specialized sub-club under Coding Brigade BVRIT (CBB), working towards technical excellence, innovation, inclusivity, and student leadership." />
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 
