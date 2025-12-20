@@ -15,14 +15,31 @@ function FIT() {
 
       <div className="relative z-20 w-full text-white">
         {/* Hero */}
-        <section className="min-h-screen pt-16 md:pt-24 py-8 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">
+        <section className="min-h-screen pt-12 md:pt-20 py-8 sm:py-16 flex flex-col items-center justify-center text-center px-4 sm:px-6">
           <img
             src="/FIT.png"
             alt="FIT Logo"
-            className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mb-6 sm:mb-8 pb-6 object-contain drop-shadow-[0_8px_16px_rgba(76,222,245,0.35)]"
+            className="
+              w-72 h-72
+              sm:w-80 sm:h-80
+              md:w-96 md:h-96
+              lg:w-[26rem] lg:h-[26rem]
+              mb-1 sm:mb-2 pb-2
+              object-contain
+              drop-shadow-[0_8px_16px_rgba(76,222,245,0.35)]
+              -translate-x-2 sm:-translate-x-3 md:-translate-x-4
+            "
           />
 
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-center leading-[1.3] pb-1">
+
+          <h2
+            className="
+              -mt-8 sm:-mt-10 md:-mt-14
+              text-3xl sm:text-5xl md:text-7xl
+              font-extrabold text-center
+              leading-[1.3] pb-1
+            "
+          >
             <span className="bg-gradient-to-b from-[#c0f4ff] to-[#4cdef5] bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.4)]">
               Female{" "}
             </span>
@@ -101,10 +118,18 @@ function FIT() {
                   programs and collaborations.
                 </p>
                 <ul className="list-disc pl-4 sm:pl-5 text-neutral-300 text-left w-full space-y-2 text-sm sm:text-base">
-                  <li>Enable participation in women-centric scholarships and fellowships</li>
-                  <li>Provide mentorship for technical and career development</li>
+                  <li>
+                    Enable participation in women-centric scholarships and
+                    fellowships
+                  </li>
+                  <li>
+                    Provide mentorship for technical and career development
+                  </li>
                   <li>Organize workshops, talks, and awareness sessions</li>
-                  <li>Connect students with industry programs and real opportunities</li>
+                  <li>
+                    Connect students with industry programs and real
+                    opportunities
+                  </li>
                 </ul>
               </div>
 
@@ -142,7 +167,8 @@ function FIT() {
                         </span>
                         <span className="text-neutral-300">
                           Ensuring awareness and access to exclusive programs,
-                          scholarships, and platforms designed for women in tech.
+                          scholarships, and platforms designed for women in
+                          tech.
                         </span>
                       </div>
                     </li>
@@ -153,8 +179,8 @@ function FIT() {
                         </span>
                         <span className="text-neutral-300">
                           Promoting continuous learning, adaptability, and
-                          long-term career development in a rapidly evolving tech
-                          landscape.
+                          long-term career development in a rapidly evolving
+                          tech landscape.
                         </span>
                       </div>
                     </li>
