@@ -38,7 +38,7 @@ function Team() {
       email: "",
       linkedin: "https://www.linkedin.com/in/siri-chandana-enukonda-23b256293/",
       github: "https://github.com/Siri-1105",
-      phone: "9063554337"
+      phone: "9550257947"
     },
 
     // 4. Head of Technical Development (Development)

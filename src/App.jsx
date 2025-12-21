@@ -7,8 +7,6 @@ import About from './pages/About';
 import Team from './pages/Team';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
-import FIT from './pages/FIT';
-import SRC from './pages/SRC';
 import Loader from './components/Loader_cbb'; // ✅ Adjust name if needed
 
 // Scroll to top on every route change
@@ -44,8 +42,6 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/events" element={<Events />} />
           <Route path="/contact-us" element={<Contact />} />
-          <Route path="/fit" element={<FIT />} />
-          <Route path="/src" element={<SRC />} />
         </Routes>
       </main>
       {showLoader && (
