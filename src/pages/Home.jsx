@@ -1,4 +1,4 @@
-const teamImage = "/images/CbbTeam.jpg";
+const teamImage = "/images/Team.jpg";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import CircularGallery from "../components/CircularGallery";
