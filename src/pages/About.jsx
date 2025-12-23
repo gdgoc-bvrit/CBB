@@ -92,7 +92,7 @@ function About() {
             </span>
           </HeadingNText>
         </div>
-        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 px-0 sm:px-6 w-full">
+        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-8 lg:gap-30 px-0 sm:px-6 w-full">
           {/* Convenor Box + Name/Designation */}
           <div className="flex flex-col items-center max-w-[300px]">
             <div
@@ -126,6 +126,71 @@ function About() {
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Dr. L. Pallavi</div>
             <div className="text-sm text-blue-400 text-center">Associate Head of Dept. CSE</div>
+          </div>
+          {/* added  */}
+          <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
+            <div
+              className={`${
+                isMobile ? 'h-[280px]' : 'h-[370px]'
+              } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
+            >
+              <img
+                src="/images/jagadeesh.webp"
+                alt="Dr. Jagadeesh"
+                className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
+              />
+            </div>
+
+            <div className="mt-3 text-lg font-semibold text-white text-center">Mr. Jagadeesh Dandu</div>
+            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+          </div>
+          <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
+            <div
+              className={`${
+                isMobile ? 'h-[280px]' : 'h-[370px]'
+              } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
+            >
+              <img
+                src="/images/sreedevi.webp"
+                alt="Dr. Sreedevi"
+                className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
+              />
+            </div>
+
+            <div className="mt-3 text-lg font-semibold text-white text-center">Mrs. Ch. Sreedevi</div>
+            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+          </div>
+          <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
+            <div
+              className={`${
+                isMobile ? 'h-[280px]' : 'h-[370px]'
+              } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
+            >
+              <img
+                src="/images/srinu.webp"
+                alt="Mr. Srinuvasarao Sanapala"
+                className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
+              />
+            </div>
+
+            <div className="mt-3 text-lg font-semibold text-white text-center">Mr. Srinuvasarao Sanapala</div>
+            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+          </div>
+          <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
+            <div
+              className={`${
+                isMobile ? 'h-[280px]' : 'h-[370px]'
+              } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
+            >
+              <img
+                src="/images/manzoor.webp"
+                alt="Dr. Manzoor"
+                className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
+              />
+            </div>
+
+            <div className="mt-3 text-lg font-semibold text-white text-center">Mr. M. Manzoor Hussain</div>
+            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
           </div>
         </div>
       </section>
