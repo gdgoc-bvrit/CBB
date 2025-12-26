@@ -101,7 +101,7 @@ function About() {
               } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
             >
               <img
-                src="/images/madhu_babu.jpg"
+                src="/images/madhu_babu.webp"
                 alt="Dr. Ch. Madhu Babu"
                 className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
               />
@@ -118,7 +118,7 @@ function About() {
               } w-full bg-[#0e0e0e] hover:bg-[#1a1a1a] transition-all duration-300 backdrop-blur-md rounded-xl border border-white/10 shadow-lg overflow-hidden flex flex-col items-center justify-center`}
             >
               <img
-                src="/images/pallavi.jpg"
+                src="/images/pallavi.webp"
                 alt="Dr. L. Pallavi"
                 className={`${isMobile ? 'w-[230px] h-[280px]' : 'w-[300px] h-[370px]'} object-cover`}
               />
@@ -251,7 +251,7 @@ function About() {
                   {/* Hackathons */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/Hackathon.jpeg" alt="Hackathons" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/Hackathon.webp" alt="Hackathons" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Hackathons</h4>
@@ -262,7 +262,7 @@ function About() {
                   {/* Coding Contests */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/codingcontest.jpeg" alt="Coding Contests" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/codingcontest.webp" alt="Coding Contests" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Coding Contests</h4>
@@ -273,7 +273,7 @@ function About() {
                   {/* Ideathons */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/Ideathon.jpeg" alt="Ideathons" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/Ideathon.webp" alt="Ideathons" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Ideathons</h4>
@@ -284,7 +284,7 @@ function About() {
                   {/* Career Development */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/careerdevelopment.jpeg" alt="Career Development" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/careerdevelopment.webp" alt="Career Development" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Career Development</h4>
@@ -295,7 +295,7 @@ function About() {
                   {/* Tech Awareness */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/techawareness.jpeg" alt="Tech Awareness" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/techawareness.webp" alt="Tech Awareness" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Tech Awareness</h4>
@@ -306,7 +306,7 @@ function About() {
                   {/* Collaboration */}
                   <Card>
                     <div className="relative w-full h-full flex flex-col justify-end items-start rounded-xl overflow-hidden">
-                      <img src="/about-images/collabration.jpeg" alt="Collaboration" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+                      <img src="/about-images/collabration.webp" alt="Collaboration" className="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
                       <div className="absolute inset-0 bg-black/40 z-10" />
                       <div className="relative z-20 p-4">
                         <h4 className="text-lg sm:text-xl font-bold text-white mb-1">Collaboration</h4>
@@ -329,7 +329,7 @@ function About() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {/* Card 1 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/DL_Workshop/DL-1.jpg" alt="DL Workshop" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/DL_Workshop/DL-1.webp" alt="DL Workshop" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">DL Workshop</h4>
                   <p className="text-xs text-neutral-200">Hands-on deep learning sessions for all levels.</p>
@@ -337,7 +337,7 @@ function About() {
               </div>
               {/* Card 2 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/FutureStack/FutureStack-1.jpg" alt="FutureStack" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/FutureStack/FutureStack-1.webp" alt="FutureStack" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">FutureStack</h4>
                   <p className="text-xs text-neutral-200">Exploring the future of technology and innovation.</p>
@@ -345,7 +345,7 @@ function About() {
               </div>
               {/* Card 3 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/Nandyala/Nandyala-2.jpeg" alt="Interaction with Young Entrepreneurs" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/Nandyala/Nandyala-2.webp" alt="Interaction with Young Entrepreneurs" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">Interaction with Young Entrepreneurs</h4>
                   <p className="text-xs text-neutral-200">Inspiring sessions and networking with emerging business leaders.</p>
@@ -353,7 +353,7 @@ function About() {
               </div>
               {/* Card 4 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/TechSurge24/TechSurge-1.JPG" alt="TechSurge24" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/TechSurge24/TechSurge-1.webp" alt="TechSurge24" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">TechSurge 24</h4>
                   <p className="text-xs text-neutral-200">Annual flagship event with coding, talks, and more.</p>
@@ -361,7 +361,7 @@ function About() {
               </div>
               {/* Card 5 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/TechTussle/TechTussle-1.JPG" alt="TechTussle" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/TechTussle/TechTussle-1.webp" alt="TechTussle" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">TechTussle</h4>
                   <p className="text-xs text-neutral-200">Competitive programming and team challenges.</p>
@@ -369,7 +369,7 @@ function About() {
               </div>
               {/* Card 6 */}
               <div className="relative rounded-xl overflow-hidden shadow-lg group h-64 flex items-end max-w-[75vw] mx-auto w-full">
-                <img src="/images/TechTussle2/TechTussle2-1.jpg" alt="TechTussle2" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <img src="/images/TechTussle2/TechTussle2-1.webp" alt="TechTussle2" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute top-0 left-0 w-full bg-black/60 p-4">
                   <h4 className="text-lg font-bold text-white mb-1">TechTussle 2.0</h4>
                   <p className="text-xs text-neutral-200">The next level of tech battles and innovation.</p>

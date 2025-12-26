@@ -7,7 +7,7 @@ const Loader = () => {
         {/* Outer rotating ring */}
         <div className="absolute inset-0 flex items-center justify-center animate-spin">
           <img 
-            src="/img/outer-ring.png" 
+            src="/img/outer-ring.webp" 
             alt="Loading ring" 
             className="w-full h-full object-contain"
             style={{ 
@@ -20,7 +20,7 @@ const Loader = () => {
         {/* Static CB text in center */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <img 
-            src="/img/cb-text.png" 
+            src="/img/cb-text.webp" 
             alt="CB" 
             className="w-36 h-36 object-contain"
             style={{ 

@@ -123,22 +123,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/TechTussle2/TechTussle2-1.jpg"
+              src="/images/TechTussle2/TechTussle2-1.webp"
               alt="TechTussle 2.0 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle2/TechTussle2-2.jpg"
+              src="/images/TechTussle2/TechTussle2-2.webp"
               alt="TechTussle 2.0 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle2/TechTussle2-3.JPG"
+              src="/images/TechTussle2/TechTussle2-3.webp"
               alt="TechTussle 2.0 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle2/TechTussle2-4.JPG"
+              src="/images/TechTussle2/TechTussle2-4.webp"
               alt="TechTussle 2.0 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
@@ -160,22 +160,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/DL_Workshop/DL-1.jpg"
+              src="/images/DL_Workshop/DL-1.webp"
               alt="Deep Learning workshop"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/DL_Workshop/DL-2.jpg"
+              src="/images/DL_Workshop/DL-2.webp"
               alt="Deep Learning workshop"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/DL_Workshop/DL-3.jpg"
+              src="/images/DL_Workshop/DL-3.webp"
               alt="Deep Learning workshop"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/DL_Workshop/DL-4.jpg"
+              src="/images/DL_Workshop/DL-4.webp"
               alt="Deep Learning workshop"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
@@ -197,22 +197,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/FutureStack/FutureStack-1.jpg"
+              src="/images/FutureStack/FutureStack-1.webp"
               alt="Future Stack event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/FutureStack/FutureStack-2.jpg"
+              src="/images/FutureStack/FutureStack-2.webp"
               alt="Future Stack event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/FutureStack/FutureStack-3.JPG"
+              src="/images/FutureStack/FutureStack-3.webp"
               alt="Future Stack event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/FutureStack/FutureStack-4.jpg"
+              src="/images/FutureStack/FutureStack-4.webp"
               alt="Future Stack event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
@@ -234,22 +234,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/Nandyala/Nandyala-1.gif"
+              src="/images/Nandyala/Nandyala-1.webp"
               alt="Interaction with Young Entrepreneurs"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/Nandyala/Nandyala-2.jpeg"
+              src="/images/Nandyala/Nandyala-2.webp"
               alt="Interaction with Young Entrepreneurs"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/Nandyala/Nandyala-3.jpeg"
+              src="/images/Nandyala/Nandyala-3.webp"
               alt="Interaction with Young Entrepreneurs"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/Nandyala/Nandyala-4.jpeg"
+              src="/images/Nandyala/Nandyala-4.webp"
               alt="Interaction with Young Entrepreneurs"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
@@ -271,22 +271,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/TechTussle/TechTussle-1.JPG"
+              src="/images/TechTussle/TechTussle-1.webp"
               alt="TechTussle event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle/TechTussle-2.JPG"
+              src="/images/TechTussle/TechTussle-2.webp"
               alt="TechTussle event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle/TechTussle-3.JPG"
+              src="/images/TechTussle/TechTussle-3.webp"
               alt="TechTussle event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechTussle/TechTussle-4.JPG"
+              src="/images/TechTussle/TechTussle-4.webp"
               alt="TechTussle event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
@@ -308,22 +308,22 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src="/images/TechSurge24/TechSurge-1.JPG"
+              src="/images/TechSurge24/TechSurge-1.webp"
               alt="TechSurge 2k24 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechSurge24/TechSurge-2.JPG"
+              src="/images/TechSurge24/TechSurge-2.webp"
               alt="TechSurge 2k24 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechSurge24/TechSurge-3.JPG"
+              src="/images/TechSurge24/TechSurge-3.webp"
               alt="TechSurge 2k24 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
             <OptimizedImage
-              src="/images/TechSurge24/TechSurge-4.JPG"
+              src="/images/TechSurge24/TechSurge-4.webp"
               alt="TechSurge 2k24 event"
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />

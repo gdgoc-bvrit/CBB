@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="flex flex-col gap-y-6 items-center justify-center text-center md:flex-row md:items-center md:justify-between md:text-left md:gap-y-0">
           {/* Logo */}
           <div className="flex items-center gap-3 justify-center">
-            <img src="/logo.png" alt="CBB Logo" className="w-12 h-12 object-contain" />
+            <img src="/logo.webp" alt="CBB Logo" className="w-12 h-12 object-contain" />
             <h1 className="text-3xl font-bold logo-text" style={{ fontFamily: 'Revamped, sans-serif' }}>
               CBB
             </h1>
