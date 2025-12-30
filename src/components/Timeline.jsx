@@ -31,19 +31,26 @@ export function TimelineDemo() {
             DSA & Beyond: A Session with Striver - 14th October 2025
           </p>
           <div className="grid grid-cols-2 gap-4">
-            {/* Placeholder for images - will be added later */}
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 1</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 2</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 3</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 4</span>
-            </div>
+            <OptimizedImage
+              src="/images/striver/image.png"
+              alt="DSA & Beyond - Striver Session"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/striver/image2.jpeg"
+              alt="DSA & Beyond - Striver Session"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/striver/image3.jpeg"
+              alt="DSA & Beyond - Striver Session"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/striver/image4.jpeg"
+              alt="DSA & Beyond - Striver Session"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),
@@ -61,19 +68,26 @@ export function TimelineDemo() {
             Alumna Talk with Priyanka Bose - 13th October 2025
           </p>
           <div className="grid grid-cols-2 gap-4">
-            {/* Placeholder for images - will be added later */}
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 1</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 2</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 3</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 4</span>
-            </div>
+            <OptimizedImage
+              src="/images/priyanka/image2.jpeg"
+              alt="Alumna Talk - Priyanka Bose"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/priyanka/image1.jpeg"
+              alt="Alumna Talk - Priyanka Bose"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/priyanka/image3.jpeg"
+              alt="Alumna Talk - Priyanka Bose"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/priyanka/image4.jpeg"
+              alt="Alumna Talk - Priyanka Bose"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),
@@ -92,19 +106,26 @@ export function TimelineDemo() {
             Techsurge 2k25: 29th & 30th July 2025
           </p>
           <div className="grid grid-cols-2 gap-4">
-            {/* Placeholder for 4 images - will be added later */}
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 1</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 2</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 3</span>
-            </div>
-            <div className="h-20 w-full rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center md:h-44 lg:h-60">
-              <span className="text-neutral-500 text-xs">Image 4</span>
-            </div>
+            <OptimizedImage
+              src="/images/TechSurge25/image1.jpeg"
+              alt="Techsurge 2k25"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/TechSurge25/image2.jpeg"
+              alt="Techsurge 2k25"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/TechSurge25/image3.jpeg"
+              alt="Techsurge 2k25"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+            <OptimizedImage
+              src="/images/TechSurge25/image4.jpeg"
+              alt="Techsurge 2k25"
+              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
           </div>
         </div>
       ),
