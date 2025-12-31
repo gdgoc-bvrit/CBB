@@ -108,7 +108,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Dr. Ch. Madhu Babu</div>
-            <div className="text-sm text-blue-400 text-center">Head of Dept. CSE</div>
+            <div className="text-sm text-blue-400 text-center">Chief Advisor · Coding Brigade BVRIT</div>
           </div>
           {/* Coordinator Box + Name/Designation */}
           <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
@@ -125,7 +125,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Dr. L. Pallavi</div>
-            <div className="text-sm text-blue-400 text-center">Associate Head of Dept. CSE</div>
+            <div className="text-sm text-blue-400 text-center">Strategic Advisor · Coding Brigade BVRIT</div>
           </div>
           {/* added  */}
           <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
@@ -142,7 +142,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Mr. Jagadeesh Dandu</div>
-            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+            <div className="text-sm text-blue-400 text-center">Technical Mentor · Coding Brigade BVRIT</div>
           </div>
           <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
             <div
@@ -158,7 +158,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Mrs. Ch. Sreedevi</div>
-            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+            <div className="text-sm text-blue-400 text-center">Community Mentor · Coding Brigade BVRIT</div>
           </div>
           <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
             <div
@@ -174,7 +174,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Mr. Srinuvasarao Sanapala</div>
-            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+            <div className="text-sm text-blue-400 text-center">Web & UI Lead Mentor · Coding Brigade BVRIT</div>
           </div>
           <div className="flex flex-col items-center max-w-[300px] mt-10 sm:mt-0">
             <div
@@ -190,7 +190,7 @@ function About() {
             </div>
 
             <div className="mt-3 text-lg font-semibold text-white text-center">Mr. M. Manzoor Hussain</div>
-            <div className="text-sm text-blue-400 text-center">Academic Mentor</div>
+            <div className="text-sm text-blue-400 text-center">Competitive Programming & DSA Mentor · Coding Brigade BVRIT</div>
           </div>
         </div>
       </section>
