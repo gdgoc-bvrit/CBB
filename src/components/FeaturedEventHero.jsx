@@ -1,240 +1,224 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import BorderedButton from "./BorderedButton";
+import { useCountdown } from "../hooks/useCountdown";
 
-export default function FeaturedEventHero({ event }) {
-  const [countdown, setCountdown] = useState("");
+const EASE = [0.22, 1, 0.36, 1];
 
-  useEffect(() => {
-    if (!event?.startDate) return;
+const SECONDARY_ACTION =
+  "inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold font-display tracking-wide transition-colors";
+const ACTION_CLASS = {
+  outline: `${SECONDARY_ACTION} border border-[#4cdef5]/40 bg-[#4cdef5]/10 text-[#4cdef5] hover:bg-[#4cdef5]/20`,
+  ghost: `${SECONDARY_ACTION} border border-white/15 bg-white/5 text-neutral-200 hover:bg-white/10`,
+};
 
-    const updateCountdown = () => {
-      const now = new Date();
-      const start = new Date(event.startDate);
-      const diff = start - now;
+const isHash = (href) => href.startsWith("#");
 
-      if (diff <= 0) {
-        setCountdown("Event Started!");
-        return;
-      }
+function Unit({ value, label, live }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="surface relative w-[48px] overflow-hidden rounded-lg border border-white/10 py-2 sm:w-[76px] sm:py-3">
+        <span
+          key={live ? value : undefined}
+          className={`block text-center font-mono text-2xl font-bold tabular-nums text-white sm:text-4xl ${
+            live ? "animate-tick" : ""
+          }`}
+        >
+          {String(value).padStart(2, "0")}
+        </span>
+      </div>
+      <span className="mt-2 font-display text-[9px] uppercase tracking-[0.18em] text-neutral-500 sm:text-[11px]">
+        {label}
+      </span>
+    </div>
+  );
+}
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+function Sep({ live }) {
+  return (
+    <span
+      className={`pt-2 font-mono text-xl sm:pt-3 sm:text-3xl ${live ? "text-[#4cdef5]/60" : "text-neutral-600"}`}
+    >
+      :
+    </span>
+  );
+}
 
-      setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    };
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-    return () => clearInterval(timer);
-  }, [event?.startDate]);
-
-  if (!event) return null;
-
-  const extractYear = (title) =>
-    title.match(/(20\d{2}|2[kK]\d{2})/)?.[0] || null;
-
-  const cleanTitle = (title) =>
-    title.replace(/(20\d{2}|2[kK]\d{2})/gi, "").trim();
-
-  const year = extractYear(event.title);
-  const title = year ? cleanTitle(event.title) : event.title;
-
-  const hasValidLogo =
-    event.logo &&
-    event.logo.trim() !== "" &&
-    event.logo !== "undefined" &&
-    event.logo !== "null";
+function Countdown({ target, label }) {
+  const { days, hours, minutes, seconds, isComplete } = useCountdown(target);
 
   return (
-    <section
-      className="relative min-h-screen flex flex-col items-center justify-center
-                 px-4 sm:px-6 pt-36 sm:pt-40 md:pt-44 pb-20 text-center"
-    >
-      {/* Background Grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div
-          className="absolute inset-0 [background-size:40px_40px]
-          [background-image:linear-gradient(to_right,#404040_1px,transparent_1px),
-          linear-gradient(to_bottom,#404040_1px,transparent_1px)]"
-        />
-      </div>
-
-      {/* Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="relative z-10 mb-6"
-      >
-        <span className="px-6 py-2 rounded-full text-sm sm:text-base font-semibold
-          uppercase tracking-wider border border-blue-300/30
-          bg-blue-500/10 text-blue-300 backdrop-blur-sm">
-          Upcoming Event
-        </span>
-      </motion.div>
-
-      {/* Title / Logo */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 mb-10 px-4"
-      >
-        {hasValidLogo ? (
-          <img
-            src={event.logo}
-            alt={event.title}
-            className="max-h-[280px] max-w-[90vw] mx-auto"
-            onError={(e) => (e.currentTarget.style.display = "none")}
-          />
-        ) : (
-          <>
-            {/* 🖥️ DESKTOP — single line */}
-            <div className="hidden md:inline-flex items-end gap-4 lg:gap-6 whitespace-nowrap">
-              <h1
-                className="font-[Revamped] leading-tight
-                           bg-gradient-to-b from-neutral-200 to-neutral-500
-                           bg-clip-text text-transparent
-                           text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
-              >
-                {title}
-              </h1>
-
-              {year && (
-                <span
-                  className="
-                    tracking-tighter flicker
-                    text-[#4cdef5d7] font-[CyberBrush]
-                    leading-none select-none
-
-                    text-[14vw] md:text-[11vw] lg:text-[9vw]
-                    rotate-[-4deg] origin-bottom-left
-                    -ml-4 md:-ml-6 lg:-ml-8
-                  "
-                >
-                  {year}
-                </span>
-              )}
-            </div>
-
-            {/* 📱 MOBILE — stacked */}
-            <div className="md:hidden flex flex-col items-center gap-4">
-              <h1
-                className="text-5xl sm:text-6xl font-[Revamped]
-                           bg-gradient-to-b from-neutral-200 to-neutral-500
-                           bg-clip-text text-transparent
-                           leading-tight text-center"
-              >
-                {title}
-              </h1>
-
-              {year && (
-                <span
-                  className="
-                    tracking-tighter flicker
-                    text-[#4cdef5d7] font-[CyberBrush]
-                    leading-none select-none
-                    text-[20vw]
-                  "
-                >
-                  {year}
-                </span>
-              )}
-            </div>
-          </>
-        )}
-      </motion.div>
-
-      {/* Countdown */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative z-10 mb-10"
-      >
-        <p className="mb-2 text-sm sm:text-base uppercase tracking-wider text-neutral-400">
-          Starts In
+    <div className="surface inline-flex max-w-[92vw] flex-col items-center rounded-2xl border border-white/10 px-3 py-4 sm:px-8 sm:py-5">
+      <span className="eyebrow text-[10px] text-neutral-500 sm:text-[11px]">{label}</span>
+      {isComplete ? (
+        <p className="mt-3 font-display text-xl font-bold text-[#4cdef5] text-glow-cyan sm:text-3xl">
+          The hackathon has begun
         </p>
-        <div className="font-mono font-bold text-[#4cdef5]
-                        text-4xl sm:text-5xl md:text-6xl">
-          {countdown || "Loading..."}
+      ) : (
+        <div className="mt-3 flex items-start gap-1.5 sm:gap-3">
+          <Unit value={days} label="Days" />
+          <Sep />
+          <Unit value={hours} label="Hrs" />
+          <Sep />
+          <Unit value={minutes} label="Min" />
+          <Sep live />
+          <Unit value={seconds} label="Sec" live />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function FeaturedEventHero({ event }) {
+  if (!event) return null;
+
+  const year = event.title.match(/(20\d{2}|2[kK]\d{2})/)?.[0] || null;
+  const title = year ? event.title.replace(/(20\d{2}|2[kK]\d{2})/gi, "").trim() : event.title;
+  const actions = event.actions || [];
+  const infoBits = [event.venue, event.mode, "₹100 / team · Round 1"].filter(Boolean);
+
+  return (
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-2 pb-24 pt-32 text-center sm:px-6 sm:pt-40">
+      {/* soft cyan glow behind the title */}
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4cdef5]/10 blur-[110px] sm:h-[520px] sm:w-[520px]" />
+
+      {event.presentedBy && (
+        <motion.p
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="eyebrow relative z-10 mb-6 text-[10px] text-neutral-400 sm:text-xs"
+        >
+          {event.presentedBy} · presents
+        </motion.p>
+      )}
+
+      {/* title */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="relative z-10 px-2"
+      >
+        <div className="hidden items-end justify-center gap-4 whitespace-nowrap md:flex lg:gap-6">
+          <h1 className="font-brand bg-gradient-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent text-7xl leading-none lg:text-8xl xl:text-9xl">
+            {title}
+          </h1>
+          {year && (
+            <span className="font-brush flicker select-none text-[#4cdef5] text-glow-cyan -ml-3 origin-bottom-left rotate-[-4deg] text-[10vw] leading-none lg:-ml-5 lg:text-[8.5vw]">
+              {year}
+            </span>
+          )}
+        </div>
+        <div className="flex flex-col items-center gap-1 md:hidden">
+          <h1 className="font-brand bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent text-[13vw] leading-none">
+            {title}
+          </h1>
+          {year && (
+            <span className="font-brush flicker select-none text-[#4cdef5] text-glow-cyan text-[17vw] leading-none">
+              {year}
+            </span>
+          )}
         </div>
       </motion.div>
 
-      {/* Buttons */}
+      {/* tagline + sub */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="relative z-10 flex flex-col sm:flex-row gap-4"
+        transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
+        className="relative z-10 mt-6 flex flex-col items-center gap-3"
       >
-        {event.brochureLink && (
-          <a
-            href={event.brochureLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 rounded-full border border-neutral-600
-                       bg-neutral-800/50 hover:bg-neutral-700/50
-                       text-neutral-200 font-semibold transition"
-          >
-            Download Brochure
-          </a>
-        )}
-
-        {event.registrationLink && (
-          <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
-            <BorderedButton>Register Now</BorderedButton>
-          </a>
-        )}
-      </motion.div>
-
-      {/* Location & Mode */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="relative z-10 mt-14 flex flex-col sm:flex-row gap-6"
-      >
-        {event.venue && (
-          <div className="px-6 py-3 rounded-xl border border-white/10
-                          bg-neutral-900/40 backdrop-blur
-                          text-lg sm:text-xl font-semibold
-                          text-[#4cdef5] shadow-[0_0_20px_#4cdef533]">
-            📍 {event.venue}
-          </div>
-        )}
-
-        {event.mode && (
-          <div className="px-6 py-3 rounded-xl border border-white/10
-                          bg-neutral-900/40 backdrop-blur
-                          text-lg sm:text-xl font-semibold
-                          text-[#4cdef5] shadow-[0_0_20px_#4cdef533]">
-            🌐 {event.mode}
-          </div>
-        )}
-      </motion.div>
-
-      {/* Description */}
-      {/* {event.description && (
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="relative z-10 mt-20 max-w-5xl text-center"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl
-                         font-bold text-neutral-200 mb-6">
-            All about {title}
-          </h2>
-
-          <p className="text-neutral-300 text-base sm:text-lg leading-relaxed">
-            {event.description}
+        {event.tagline && (
+          <p className="font-brush text-2xl tracking-wide text-neutral-200 sm:text-3xl md:text-4xl">
+            {event.tagline}
           </p>
+        )}
+        {event.subtitle && (
+          <div className="flex items-center gap-3 text-neutral-400">
+            <span className="h-px w-8 bg-white/20" />
+            <span className="font-display text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
+              {event.subtitle}
+            </span>
+            <span className="h-px w-8 bg-white/20" />
+          </div>
+        )}
+      </motion.div>
+
+      {/* date pill */}
+      {event.dateDisplay && (
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25, ease: EASE }}
+          className="relative z-10 mt-6"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-orange-300/30 bg-orange-400/10 px-4 py-1.5 font-display text-sm font-semibold text-orange-200">
+            <span aria-hidden>📅</span> {event.dateDisplay}
+          </span>
         </motion.div>
-      )} */}
+      )}
+
+      {/* countdown */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.32, ease: EASE }}
+        className="relative z-10 mt-10"
+      >
+        <Countdown target={event.startDate} label={event.countdownLabel || "Starts in"} />
+      </motion.div>
+
+      {/* actions */}
+      {actions.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
+          className="relative z-10 mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
+        >
+          {actions.map((action) => {
+            const linkProps = isHash(action.href)
+              ? {}
+              : { target: "_blank", rel: "noopener noreferrer" };
+            return action.variant === "primary" ? (
+              <a key={action.label} href={action.href} {...linkProps}>
+                <BorderedButton>{action.label}</BorderedButton>
+              </a>
+            ) : (
+              <a
+                key={action.label}
+                href={action.href}
+                {...linkProps}
+                className={ACTION_CLASS[action.variant] || ACTION_CLASS.ghost}
+              >
+                {action.label}
+              </a>
+            );
+          })}
+        </motion.div>
+      )}
+
+      {/* info strip */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-neutral-500"
+      >
+        {infoBits.map((bit, i) => (
+          <span key={bit} className="flex items-center gap-3">
+            {i > 0 && <span className="text-neutral-700">•</span>}
+            {bit}
+          </span>
+        ))}
+      </motion.p>
+
+      {/* scroll cue */}
+      <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+        <svg className="animate-scroll-cue h-6 w-6 text-[#4cdef5]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
     </section>
   );
 }

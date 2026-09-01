@@ -1,15 +1,51 @@
-# React + Vite
+# Coding Brigade BVRIT — Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Official website of **Coding Brigade BVRIT (CBB)**, the student-driven coding club at BVR Institute of Technology, Narsapur.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **Vite 7**
+- **Tailwind CSS 4** (via `@tailwindcss/vite`)
+- **React Router 7** — client-side routing, code-split per route
+- **framer-motion** — UI animation
+- **GSAP** — the "What We Do" card stack (`CardSwap`)
+- **OGL** — the WebGL gallery on the home page (`CircularGallery`)
+- **EmailJS** — contact form delivery
+- Event content is static, defined in `src/data/` (previously pulled from a Google Sheet)
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev        # start the dev server
+npm run build      # production build -> dist/
+npm run preview    # preview the production build
+npm run lint       # eslint
+```
 
-## Backend Contact Form API
-A backend Express server will be added in `/server` to handle contact form submissions and send emails via SendGrid for reliable delivery.
+## Project layout
+
+```
+public/            static assets served as-is (images, fonts, video, posters)
+src/
+  App.jsx          route definitions (lazy-loaded pages)
+  main.jsx         app entry
+  index.css        Tailwind entry + global styles / keyframes
+  pages/           Home, About, Team, Events, Contact
+  components/      shared UI (navbar, footer, cards, gallery, timeline, …)
+  hooks/           useMediaQuery, useCountdown
+  data/            static content (team roster, about copy, past events)
+  utils/           fetchEvents (Google Sheet), formatDate
+```
+
+## Editing content
+
+- **Team roster** — `src/data/team.js`
+- **About page copy, mentors, activity cards** — `src/data/about.js`
+- **Past events timeline** — `src/data/pastEvents.js`
+- **Featured event, sub-events, schedule, registration steps** — `src/data/techsurge.js`
+
+## Deployment
+
+Configured for **Vercel** (`vercel.json` — SPA rewrite + asset cache headers).
+`public/_redirects` provides the equivalent SPA fallback for Netlify / Cloudflare Pages.

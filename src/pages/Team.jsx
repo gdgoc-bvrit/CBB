@@ -1,362 +1,37 @@
-import React, { useState } from 'react';
-import { FaEnvelope, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { useState } from "react";
 import Footer from "../components/Footer";
 import ProfileCard from "../components/ProfileCard";
 import HeadingNText from "../components/HeadingNText";
 import BorderedButton from "../components/BorderedButton";
+import { usePageMeta } from "../hooks/usePageMeta";
+import { coreTeam, coreTeamExtra, previousTeam } from "../data/team";
+
+function MemberCard({ member, className = "" }) {
+  return (
+    <div className="flex justify-center">
+      <ProfileCard
+        name={member.name}
+        title={member.role}
+        handle={member.name.toLowerCase().replace(/\s+/g, "")}
+        contactText="Contact"
+        avatarUrl={member.image}
+        showUserInfo
+        className={`w-full max-w-[280px] sm:max-w-sm ${className}`.trim()}
+        linkedin={member.linkedin}
+        github={member.github}
+        phone={member.phone}
+        behindGradient
+        innerGradient
+        enableTilt
+      />
+    </div>
+  );
+}
 
 function Team() {
-  const [showTeam2025, setShowTeam2025] = useState(false);
-  const teamMembers = [
-    // 1. President
-    {
-      name: "Nikhil Mamilla",
-      role: "President",
-      image: "/img/nikhil.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/nikhil-mamilla-823922289",
-      github: "https://github.com/NikhilMamilla",
-      phone: "7842070463"
-    },
-
-    // 2. Vice President
-    {
-      name: "Gadila Sowmya",
-      role: "Vice President",
-      image: "/img/sowmyab.png",
-      email: "sowmya@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/sowmya-gadila",
-      github: "https://github.com/GadilaSowmya",
-      phone: "6305055156"
-    },
-
-    // 3. Director of Administration
-    {
-      name: "E Siri Chandana",
-      role: "Director of Administration",
-      image: "/img/siri.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/siri-chandana-enukonda-23b256293/",
-      github: "https://github.com/Siri-1105",
-      phone: "9550257947"
-    },
-
-    // 4. Head of Technical Development (Development)
-    {
-      name: "Dubasi Mukundh",
-      role: "Head of Technical Department (Development)",
-      image: "/img/mukundh.png",
-      email: "mukundh@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/mukundh-dubasi-7a7158293",
-      github: "https://github.com/Mukundh15",
-      phone: "7386199296"
-    },
-
-    // 5. Head of Technical Development (Operations)
-    {
-      name: "M Eashwar Reddy",
-      role: "Head of Technical Department (Operations)",
-      image: "/img/eashwar.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/merige-eashwar-reddy-4963b0293/",
-      github: "https://github.com/Eashwar-reddy",
-      phone: "9392782641"
-    },
-    // 6. Head of Logistics
-    {
-      name: "S Gopi Sai Mahesh",
-      role: "Head of Logistics",
-      image: "/img/mahesh.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/somepalli-gopi-sai-mahesh-557167293",
-      github: "https://github.com/mahesh1110",
-      phone: "7032623679"
-    },
-
-    // 7. Technical Research and Funding Lead
-    {
-      name: "B Jatin Kumar",
-      role: "Technical Research and Funding Lead",
-      image: "/img/jathin.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/jatin-kumar-boyeena/",
-      github: "https://github.com/BJatinKumar",
-      phone: "7207191770"
-    },
-
-    // 8. Treasurer
-    {
-      name: "Vishwa Teja Chilupuri",
-      role: "Treasurer",
-      image: "/img/vishwa.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/vishwa-teja-chilupuri-410224302",
-      github: "https://github.com/Vishwaa090804",
-      phone: "9618052510"
-    },
-
-    // 9. Digital Head
-    {
-      name: "P Sai Sathwik",
-      role: "Digital Head",
-      image: "/img/sathwik.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/sathwik180/",
-      github: "https://github.com/Sai-Sathwik2718",
-      phone: "8977176804"
-    },
-    // 10. Marketing Executive
-    {
-      name: "Ediga Sai Murari",
-      role: "Marketing Executive",
-      image: "/img/murari.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/ediga-sai-murari-goud-a46499293",
-      github: "https://github.com/Saimurarigoud",
-      phone: "6300502920"
-    },
-
-    // 11. Social Media Manager
-    {
-      name: "Chanagari Nandini",
-      role: "Social Media Manager",
-      image: "/img/nandhini.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/chanagari-nandini-95a309304/",
-      github: "https://github.com/23211A0552",
-      phone: "7799008029"
-    },
-
-    // 12. Creative Head
-    {
-      name: "Kasani Hansika Goud",
-      role: "Creative Head",
-      image: "/img/hansika.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/kasani-hansika-3b0973289/",
-      github: "https://github.com/Hansika65",
-      phone: "9381867924"
-    },
-
-    // 13. Innovation & Outreach Lead
-    {
-      name: "Kiran Kumar Reddy",
-      role: "Innovation and Outreach Lead",
-      image: "/img/kiran.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/nallagutla-kiran-kumar-reddy-1aa3b6293/",
-      github: "https://github.com/kirankumar2403",
-      phone: "7816030968"
-    },
-
-
-    // 14. Event Manager
-    {
-      name: "Amara Shivateja",
-      role: "Event Manager",
-      image: "/img/amara.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/amarashivateja",
-      github: "https://github.com/shivatejaamara",
-      phone: "9515683604"
-    },
-
-    // 15. Event Manager
-    {
-      name: "Annabeemoju Varun",
-      role: "Event Manager",
-      image: "/img/varun.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/varun-annabeemoju-3378762a6",
-      github: "https://github.com/Varunannabeemoju123",
-      phone: "9063991205"
-    },
-
-    // 16. Feedback and Review Manager
-    {
-      name: "Beere Adbhutha",
-      role: "Feedback and Review Manager",
-      image: "/img/Adbutha.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/adbhutha",
-      github: "https://github.com/Adbhutha10",
-      phone: "9866796510"
-    }];
-    const teamMembers2 = [
-    // 17. Hospitality Head
-    {
-      name: "Mogili Sowmya Reddy",
-      role: "Hospitality Head",
-      image: "/img/sowmyac.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/mogili-sowmya-reddy-779932293/",
-      github: "https://github.com/SowmyaReddyMogili",
-      phone: "8074957956"
-    },
-
-    // 18. Volunteer Program Manager
-    {
-      name: "B Raghavendra",
-      role: "program coordination manager",
-      image: "/img/ragava.png",
-      email: "",
-      linkedin: "https://www.linkedin.com/in/burugula-raghavendra",
-      github: "https://github.com/Burugula2006",
-      phone: "9014353208"
-    }
-  ];
-
-  const teamMembers3 = [
-    {
-      name: "Karthik",
-      role: "President",
-      image: "/img2/karthik.png",
-      email: "karthik@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/karthiksabareeshboddeti21052004?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      github: "https://github.com/KarthikSbrshB",
-      phone: "9989907703"
-    },
-    {
-      name: "Sowmya",
-      role: "Vice President",
-      image: "/img2/sowmya.png",
-      email: "sowmya@bvrit.ac.in",
-      linkedin: "www.linkedin.com/in/sowmyagopisetti",
-      github: "https://github.com/SowmyaGopisetti",
-      phone: "9398773971"
-    },
-    {
-      name: "Rashmitha Sai",
-      role: "Director of Administration",
-      image: "/img2/rashmitha sai.png",
-      email: "rashmitha@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/rashmitha-sai-chidirala-7a3aa6258",
-      github: "https://github.com/Chidirala-12",
-      phone: "6305160329"
-    },
-    {
-      name: "Eshwari",
-      role: "Marketing Executive",
-      image: "/img2/eshwari.png",
-      email: "eshwari@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/eshwarikalamatha/",
-      github: "https://github.com/Kalamatha-Eshwari",
-      phone: "6304567483"
-    },
-    {
-      name: "Santhosh",
-      role: "Social Media Manager",
-      image: "/img2/santhosh.png",
-      email: "santhosh@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/vemula-santhosh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/Santhosh00001",
-      phone: "6304912971"
-    },
-    {
-      name: "Ajay Kumar",
-      role: "Head of Technical Department",
-      image: "/img2/ajay kumar.png",
-      email: "ajay@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/ajay-kumar-potuganti",
-      github: "https://github.com/ajay0120",
-      phone: "9573282765"
-    },
-    {
-      name: "Thrinath",
-      role: "Event Manager",
-      image: "/img2/thrinath.png",
-      email: "thrinath@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/kasarlathrinathreddy",
-      github: "https://github.com/ThrinathReddyKasarla",
-      phone: "7993172793"
-    },
-    {
-      name: "Pavan Chandra",
-      role: "Event Manager",
-      image: "/img2/pavan chandra.png",
-      email: "pavan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/pavan-chnadra?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/Pavanchandra4000",
-      phone: "7989240927"
-    },
-    {
-      name: "Reshmi",
-      role: "Hospitality Head",
-      image: "/img2/reshmi.png",
-      email: "reshmi@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/reshmi-bodepudi",
-      github: "https://github.com/reshmibodepudi",
-      phone: "9293947141"
-    },
-    {
-      name: "Aniket",
-      role: "Digital Head",
-      image: "/img2/aniket.png",
-      email: "aniket@bvrit.ac.in",
-      linkedin: "https://linkedin.com/in/aniket-cbb",
-      github: "https://github.com/aniket-cbb",
-      phone: ""
-    },
-    {
-      name: "Sai Charan",
-      role: "Feedback & Review Manager",
-      image: "/img2/sai charan.png",
-      email: "saicharan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/a-sai-charan-166573259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/aduganisaicharan",
-      phone: "8074242996"
-    },
-    {
-      name: "Sriya",
-      role: "Innovation & Outreach Lead",
-      image: "/img2/sriya.png",
-      email: "sriya@bvrit.ac.in",
-      linkedin: "http://linkedin.com/in/sriya-lanka-065253259",
-      github: "https://github.com/sl-1718",
-      phone: "7997016612"
-    },
-    {
-      name: "Vasanth",
-      role: "Head of Logistics",
-      image: "/img2/vasanth.png",
-      email: "vasanth@bvrit.ac.in",
-      linkedin: "http://www.linkedin.com/in/vasanth-kumar-musku-1b9335259/",
-      github: "https://github.com/MuskuVasanthKumar",
-      phone: "9949132441"
-    },
-    {
-      name: "Vishal",
-      role: "Treasurer",
-      image: "/img2/vishal.png",
-      email: "vishal@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/vishal-reddy-086583259/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      github: "https://github.com/GurramVishalReddy",
-      phone: "6301721315"
-    },
-    {
-      name: "Abhigna",
-      role: "Creative Head",
-      image: "/img2/abhigna.png",
-      email: "abhigna@bvrit.ac.in",
-      linkedin: "https://linkedin.com//in/arsam-abhigna-740395259",
-      github: "https://github.com/Abhigna-arsam",
-      phone: "8897004240"
-    },
-    {
-      name: "Anjan Kumar",
-      role: "Volunteer Program Manager",
-      image: "/img2/anjan kumar.png",
-      email: "anjan@bvrit.ac.in",
-      linkedin: "https://www.linkedin.com/in/anjan-kumar-kamalapur-8b1398259",
-      github: "https://github.com/AnjanKumarKamalapur",
-      phone: "9441817172"
-    }
-  ];
-
-  const handleContactClick = (member) => {
-    // Open email client with member's email
-    window.open(`mailto:${member.email}`, '_blank');
-  };
+  usePageMeta("Our Team · CBB", "Meet the student team behind Coding Brigade BVRIT.");
+  const [showPreviousTeam, setShowPreviousTeam] = useState(false);
+  const primaryMembers = showPreviousTeam ? previousTeam : coreTeam;
 
   return (
     <div className="relative flex w-full items-center justify-center bg-black min-h-screen">
@@ -366,69 +41,37 @@ function Team() {
       <div className="relative z-20 w-full text-white pointer-events-auto">
         <section className="py-8 sm:py-12 md:py-16 lg:py-20 pt-16 sm:pt-20 md:pt-24">
           <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
-            {/* Header */}
             <div className="flex flex-col items-center justify-center text-center mb-6 sm:mb-8 lg:mb-12">
-              <HeadingNText title={showTeam2025 ? "CBB Batch 2026" : "CBB Batch 2027"}>
-                {showTeam2025
+              <HeadingNText level={1} title={showPreviousTeam ? "CBB Batch 2026" : "CBB Batch 2027"}>
+                {showPreviousTeam
                   ? "Our Previous Year Core Team"
                   : "One Team. One Vision. Infinite Possibilities."}
               </HeadingNText>
             </div>
 
-            {/* Team Grid with ProfileCards */}
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center items-center min-h-[60vh]">
-              {(showTeam2025 ? teamMembers3 : teamMembers).map((member, index) => (
-                <div key={index} className="flex justify-center">
-                  <ProfileCard
-                    name={member.name}
-                    title={member.role}
-                    handle={member.name.toLowerCase().replace(/\s+/g, '')}
-                    contactText="Contact"
-                    avatarUrl={member.image}
-                    showUserInfo={true}
-                    onContactClick={() => handleContactClick(member)}
-                    className={`w-full max-w-[280px] sm:max-w-sm${member.name === 'Eshwari' ? ' avatar-eshwari' : ''}`}
-                    linkedin={member.linkedin}
-                    github={member.github}
-                    phone={member.phone}
-                    behindGradient={true}
-                    innerGradient={true}
-                    enableTilt={true}
-                  />
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center items-start min-h-[60vh]">
+              {primaryMembers.map((member) => (
+                <MemberCard
+                  key={member.name}
+                  member={member}
+                  className={member.name === "Eshwari" ? "avatar-eshwari" : ""}
+                />
               ))}
             </div>
-            {!showTeam2025 && (
+
+            {!showPreviousTeam && (
               <div className="w-full flex justify-center">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 justify-items-center mt-5">
-                  {teamMembers2.map((member, index) => (
-                    <div key={index} className="flex justify-center">
-                      <ProfileCard
-                        name={member.name}
-                        title={member.role}
-                        handle={member.name.toLowerCase().replace(/\s+/g, '')}
-                        contactText="Contact"
-                        avatarUrl={member.image}
-                        showUserInfo={true}
-                        onContactClick={() => handleContactClick(member)}
-                        className="w-full max-w-[280px] sm:max-w-sm"
-                        linkedin={member.linkedin}
-                        github={member.github}
-                        phone={member.phone}
-                        behindGradient={true}
-                        innerGradient={true}
-                        enableTilt={true}
-                      />
-                    </div>
+                  {coreTeamExtra.map((member) => (
+                    <MemberCard key={member.name} member={member} />
                   ))}
                 </div>
               </div>
             )}
+
             <div className="flex justify-center mt-8">
-              <BorderedButton
-                onClick={() => setShowTeam2025(!showTeam2025)}
-              >
-                {showTeam2025 ? "VIEW CURRENT TEAM" : "VIEW TEAM 2025"}
+              <BorderedButton onClick={() => setShowPreviousTeam((v) => !v)}>
+                {showPreviousTeam ? "View current team" : "View Batch 2026 team"}
               </BorderedButton>
             </div>
           </div>

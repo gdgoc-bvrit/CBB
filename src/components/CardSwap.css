@@ -14,7 +14,6 @@
     border: 1px solid #fff;
     background: #000;
     transform-style: preserve-3d;
-    will-change: transform;
     backface-visibility: hidden;
 }
 

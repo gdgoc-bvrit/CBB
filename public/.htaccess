@@ -1,0 +1,63 @@
+# ============================================================================
+#  Coding Brigade BVRIT — Apache configuration
+#  Place this file in the same folder as index.html (the web root).
+# ============================================================================
+
+# --- Single-page-app routing -------------------------------------------------
+# The site is one HTML file; React Router handles /about, /team, etc. in the
+# browser. Without this rule, refreshing or opening those URLs directly gives
+# a 404 because there is no /about file on disk.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Don't touch the index itself
+    RewriteRule ^index\.html$ - [L]
+
+    # Serve any file or folder that actually exists (JS, CSS, images, …)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Everything else -> the app shell
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# --- Compression -----------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# --- Caching & security headers ------------------------------------------
+<IfModule mod_headers.c>
+    # Hashed build assets never change — cache them for a year
+    <FilesMatch "\.(js|css|woff2|woff|ttf|otf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    # Images / video — a day, then revalidate
+    <FilesMatch "\.(jpg|jpeg|png|webp|gif|svg|mp4|pdf)$">
+        Header set Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+    </FilesMatch>
+    # The HTML shell must always be fresh
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- Correct MIME types (older servers sometimes miss these) --------------
+<IfModule mod_mime.c>
+    AddType application/javascript .js .mjs
+    AddType text/css .css
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType image/svg+xml .svg
+    AddType video/mp4 .mp4
+</IfModule>
+
+ErrorDocument 404 /index.html

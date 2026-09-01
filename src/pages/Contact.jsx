@@ -1,40 +1,57 @@
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import BorderedButton from "../components/BorderedButton";
 import Footer from "../components/Footer";
 import HeadingNText from "../components/HeadingNText";
-import React, { useState } from "react";
-import emailjs from '@emailjs/browser';
+import { usePageMeta } from "../hooks/usePageMeta";
+
+const EMAILJS_SERVICE_ID = "service_9bzkvax";
+const EMAILJS_TEMPLATE_ID = "template_3imrlsh";
+const EMAILJS_PUBLIC_KEY = "my3RAeh-wLHVI6_rA";
+const COOLDOWN_MS = 30_000;
 
 function Contact() {
+  usePageMeta("Contact · CBB", "Get in touch with the Coding Brigade BVRIT team.");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const lastSentAt = useRef(0);
+  const honeypotRef = useRef(null);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    // Bots fill hidden fields; humans don't.
+    if (honeypotRef.current?.value) return;
+
+    // Light client-side throttle to blunt casual form flooding.
+    if (Date.now() - lastSentAt.current < COOLDOWN_MS) {
+      setStatus("Please wait a moment before sending another message.");
+      return;
+    }
+
     setLoading(true);
     setStatus("");
     try {
-      // EmailJS integration
       await emailjs.send(
-        'service_9bzkvax',
-        'template_3imrlsh',
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        },
-        'my3RAeh-wLHVI6_rA'
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        { name: form.name, email: form.email, message: form.message },
+        EMAILJS_PUBLIC_KEY
       );
+      lastSentAt.current = Date.now();
       setStatus("Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
     } catch {
       setStatus("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -48,20 +65,32 @@ function Contact() {
       <div className="relative z-20 w-full text-white">
         <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-8 mb-12">
 
-          <HeadingNText title="Contact Us" className="mt-4">
+          <HeadingNText level={1} title="Contact Us">
             Reach out to the CBB team for collaborations, queries, or just to say hi!
           </HeadingNText>
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 sm:mt-12 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl bg-[#0e0e0e] backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg flex flex-col gap-3 sm:gap-4 text-left"
+            className="relative mt-8 sm:mt-12 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl bg-[#0e0e0e] border border-white/10 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg flex flex-col gap-3 sm:gap-4 text-left"
           >
+            {/* Honeypot — visually hidden, off the tab order */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute left-[-9999px] h-0 w-0 opacity-0"
+            />
+
             {/* Name Field */}
             <div>
               <label className="block text-neutral-400 mb-2 text-xs sm:text-sm">Name</label>
               <input
                 type="text"
                 name="name"
+                autoComplete="name"
                 required
                 value={form.name}
                 onChange={handleChange}
@@ -76,6 +105,7 @@ function Contact() {
               <input
                 type="email"
                 name="email"
+                autoComplete="email"
                 required
                 value={form.email}
                 onChange={handleChange}
@@ -100,12 +130,18 @@ function Contact() {
 
             {/* Status Message */}
             {status && (
-              <div className={`text-center text-xs sm:text-sm font-medium ${status.includes('success') ? 'text-green-400' : 'text-red-400'}`}>{status}</div>
+              <div
+                role="status"
+                aria-live="polite"
+                className={`text-center text-xs sm:text-sm font-medium ${status.includes('success') ? 'text-green-400' : 'text-red-400'}`}
+              >
+                {status}
+              </div>
             )}
 
             {/* Submit Button */}
-            <div className="flex justify-center">
-              <BorderedButton type="submit" className="px-4 sm:px-6 py-2 text-xs sm:text-sm md:text-base" disabled={loading}>
+            <div className="mt-2 flex justify-center">
+              <BorderedButton type="submit" disabled={loading}>
                 {loading ? "Sending..." : "Send Message"}
               </BorderedButton>
             </div>

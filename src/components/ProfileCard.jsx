@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { FaLinkedin, FaGithub, FaPhone } from "react-icons/fa";
 import "./ProfileCard.css";
 
@@ -46,33 +47,56 @@ const ProfileCardComponent = ({
   name = "Javi A. Torres",
   title = "Software Engineer",
   handle = "javicodes",
-  status = "Online",
   contactText = "Contact",
   showUserInfo = true,
-  onContactClick,
   linkedin = "",
   github = "",
   phone = "",
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
-  const [showContactMenu, setShowContactMenu] = useState(false);
+  const contactBtnRef = useRef(null);
   const contactMenuRef = useRef(null);
+  const [showContactMenu, setShowContactMenu] = useState(false);
+  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
 
-  // Close menu on outside click
+  // The 3D tilt only makes sense with a real pointer — skip it on touch,
+  // which also removes 18 idle rAF loops on the Team page.
+  const [canTilt] = useState(
+    () =>
+      enableTilt &&
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(hover: hover) and (pointer: fine)").matches
+  );
+
+  // Close the menu on outside click, Escape, scroll or resize.
   useEffect(() => {
-    if (!showContactMenu) return;
-    function handleClick(e) {
-      if (contactMenuRef.current && !contactMenuRef.current.contains(e.target)) {
-        setShowContactMenu(false);
+    if (!showContactMenu) return undefined;
+    const close = () => setShowContactMenu(false);
+    const onClick = (e) => {
+      if (
+        contactMenuRef.current &&
+        !contactMenuRef.current.contains(e.target) &&
+        !contactBtnRef.current?.contains(e.target)
+      ) {
+        close();
       }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    };
+    const onKey = (e) => e.key === "Escape" && close();
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("scroll", close, true);
+    window.addEventListener("resize", close);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", close, true);
+      window.removeEventListener("resize", close);
+    };
   }, [showContactMenu]);
 
   const animationHandlers = useMemo(() => {
-    if (!enableTilt) return null;
+    if (!canTilt) return null;
 
     let rafId = null;
 
@@ -147,7 +171,7 @@ const ProfileCardComponent = ({
         }
       },
     };
-  }, [enableTilt]);
+  }, [canTilt]);
 
   const handlePointerMove = useCallback(
     (event) => {
@@ -235,7 +259,7 @@ const ProfileCardComponent = ({
   );
 
   useEffect(() => {
-    if (!enableTilt || !animationHandlers) return;
+    if (!canTilt || !animationHandlers) return;
 
     const card = cardRef.current;
     const wrap = wrapRef.current;
@@ -250,14 +274,12 @@ const ProfileCardComponent = ({
     card.addEventListener("pointermove", pointerMoveHandler);
     card.addEventListener("pointerleave", pointerLeaveHandler);
 
-    const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
-
-    animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
-    animationHandlers.createSmoothAnimation(
-      ANIMATION_CONFIG.INITIAL_DURATION,
-      initialX,
-      initialY,
+    // Rest the card in a subtle static pose. (The old intro "sweep" ran a
+    // 1.5s rAF loop per card — 18 at once on the Team page — for a flourish
+    // most users never saw.)
+    animationHandlers.updateCardTransform(
+      wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET,
+      ANIMATION_CONFIG.INITIAL_Y_OFFSET,
       card,
       wrap
     );
@@ -269,7 +291,7 @@ const ProfileCardComponent = ({
       animationHandlers.cancelAnimation();
     };
   }, [
-    enableTilt,
+    canTilt,
     animationHandlers,
     handlePointerMove,
     handlePointerEnter,
@@ -290,8 +312,14 @@ const ProfileCardComponent = ({
   );
 
   const handleContactClick = useCallback((e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    setShowContactMenu((v) => !v);
+    e.stopPropagation();
+    setShowContactMenu((v) => {
+      if (!v && contactBtnRef.current) {
+        const r = contactBtnRef.current.getBoundingClientRect();
+        setMenuPos({ top: r.top - 10, left: r.left + r.width / 2 });
+      }
+      return !v;
+    });
   }, []);
 
   const handleLinkClick = useCallback((e) => {
@@ -341,37 +369,36 @@ const ProfileCardComponent = ({
                 </div>
                 <div style={{ position: "relative" }}>
                   <button
+                    ref={contactBtnRef}
                     className="pc-contact-btn"
                     onClick={handleContactClick}
                     type="button"
+                    aria-haspopup="menu"
+                    aria-expanded={showContactMenu}
                     aria-label={`Contact ${name || "user"}`}
-                    style={{ 
-                      position: "relative",
-                      zIndex: 10,
-                      pointerEvents: "auto"
-                    }}
+                    style={{ position: "relative", zIndex: 10, pointerEvents: "auto" }}
                   >
                     {contactText}
                   </button>
-                  {showContactMenu && (
+                  {showContactMenu &&
+                    createPortal(
                     <div
                       ref={contactMenuRef}
+                      role="menu"
                       style={{
-                        position: "fixed", // Changed from absolute to fixed
-                        bottom: "auto",
-                        top: "auto",
-                        left: "auto",
-                        right: "auto",
-                        transform: "translate(-50%, calc(-100% - 10px))",
-                        background: "rgba(24, 24, 27, 0.95)",
-                        backdropFilter: "blur(10px)",
+                        position: "fixed",
+                        top: menuPos.top,
+                        left: menuPos.left,
+                        transform: "translate(-50%, -100%)",
+                        background: "rgba(18, 18, 21, 0.98)",
+                        backdropFilter: "blur(6px)",
                         border: "1px solid #4cdef5",
                         borderRadius: 8,
-                        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
                         padding: 12,
-                        zIndex: 9999,
+                        zIndex: 120,
                         pointerEvents: "auto",
-                        minWidth: 140,
+                        minWidth: 150,
                         display: "flex",
                         flexDirection: "column",
                         gap: 8,
@@ -465,7 +492,8 @@ const ProfileCardComponent = ({
                           <FaPhone size={16} /> {phone}
                         </a>
                       )}
-                    </div>
+                    </div>,
+                    document.body
                   )}
                 </div>
               </div>

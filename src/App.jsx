@@ -1,20 +1,33 @@
-import { useState, useEffect } from 'react';
+import { Suspense, lazy, useLayoutEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import PillNavbar from './components/PillNavbar';
-import Home from './pages/Home';
-import About from './pages/About';
-import Team from './pages/Team';
-import Events from './pages/Events';
-import Contact from './pages/Contact';
+import ErrorBoundary from './components/ErrorBoundary';
+import NotFound from './components/NotFound';
 
-// Scroll to top on every route change
+// Route-level code splitting: each page (and the heavy libs it pulls in —
+// WebGL gallery, GSAP) downloads only when the user visits it.
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
+const Events = lazy(() => import('./pages/Events'));
+const Contact = lazy(() => import('./pages/Contact'));
+
+// Jump (never smooth-scroll) to the top on every route change.
 function ScrollToTop() {
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
   return null;
+}
+
+function PageFallback() {
+  return (
+    <div className="flex min-h-screen items-center justify-center" role="status" aria-label="Loading">
+      <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-[#4cdef5]" />
+    </div>
+  );
 }
 
 function App() {
@@ -23,13 +36,18 @@ function App() {
       <ScrollToTop />
       <PillNavbar />
       <main className="min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/contact-us" element={<Contact />} />
-        </Routes>
+        <ErrorBoundary>
+          <Suspense fallback={<PageFallback />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/contact-us" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
     </div>
   );

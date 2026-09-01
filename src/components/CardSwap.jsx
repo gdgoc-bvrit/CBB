@@ -166,28 +166,60 @@ const CardSwap = ({
       });
     };
 
-    swap();
-    intervalRef.current = window.setInterval(swap, delay);
+    const node = container.current;
+    let visible = true;
 
-    if (pauseOnHover) {
-      const node = container.current;
-      const pause = () => {
-        tlRef.current?.pause();
-        clearInterval(intervalRef.current);
-      };
-      const resume = () => {
-        tlRef.current?.play();
-        intervalRef.current = window.setInterval(swap, delay);
-      };
-      node.addEventListener("mouseenter", pause);
-      node.addEventListener("mouseleave", resume);
-      return () => {
-        node.removeEventListener("mouseenter", pause);
-        node.removeEventListener("mouseleave", resume);
-        clearInterval(intervalRef.current);
-      };
+    const startCycle = () => {
+      clearInterval(intervalRef.current);
+      intervalRef.current = window.setInterval(swap, delay);
+    };
+    const stopCycle = () => {
+      clearInterval(intervalRef.current);
+      tlRef.current?.pause();
+    };
+
+    swap();
+    startCycle();
+
+    // Only run the animation while the card stack is on screen.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && !document.hidden) {
+          tlRef.current?.play();
+          startCycle();
+        } else {
+          stopCycle();
+        }
+      },
+      { threshold: 0.01 }
+    );
+    if (node) io.observe(node);
+
+    const onVisibility = () => {
+      if (document.hidden || !visible) stopCycle();
+      else startCycle();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    let hoverPause, hoverResume;
+    if (pauseOnHover && node) {
+      hoverPause = () => stopCycle();
+      hoverResume = () => visible && startCycle();
+      node.addEventListener("mouseenter", hoverPause);
+      node.addEventListener("mouseleave", hoverResume);
     }
-    return () => clearInterval(intervalRef.current);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (node && hoverPause) {
+        node.removeEventListener("mouseenter", hoverPause);
+        node.removeEventListener("mouseleave", hoverResume);
+      }
+      clearInterval(intervalRef.current);
+      tlRef.current?.kill();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     cardDistance,
